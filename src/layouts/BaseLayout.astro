@@ -1,0 +1,102 @@
+---
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
+import { site } from "@/data/site";
+import { eventSchema, formatPageTitle, mergeStructuredData } from "@/lib/seo";
+import "@/styles/globals.css";
+import type { SeoProps } from "@/types/seo";
+import { isHomePath, withBase } from "@/utils/path";
+import { ClientRouter } from "astro:transitions";
+
+type Props = SeoProps;
+
+const {
+  title,
+  description,
+  image,
+  noindex = false,
+  ogType = "website",
+  structuredData,
+} = Astro.props;
+
+const resolvedTitle = formatPageTitle(title);
+const resolvedDescription = description ?? site.description;
+const siteUrl = Astro.site ?? Astro.url.origin;
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const socialImagePath = image ?? site.ogImage;
+const socialImage = socialImagePath
+  ? new URL(withBase(socialImagePath), siteUrl).href
+  : undefined;
+const pageStructuredData = isHomePath(Astro.url.pathname)
+  ? eventSchema(siteUrl)
+  : structuredData;
+const jsonLd = mergeStructuredData(siteUrl, pageStructuredData);
+---
+
+<!doctype html>
+<html lang={site.language}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content={site.themeColor} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{resolvedTitle}</title>
+    <meta name="title" content={resolvedTitle} />
+    <meta name="description" content={resolvedDescription} />
+    <meta
+      name="robots"
+      content={noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-image-preview:large"}
+    />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:title" content={resolvedTitle} />
+    <meta property="og:description" content={resolvedDescription} />
+    <meta property="og:url" content={canonical} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+
+    <meta
+      name="twitter:card"
+      content={socialImage ? "summary_large_image" : "summary"}
+    />
+    <meta name="twitter:site" content={site.twitter} />
+    <meta name="twitter:title" content={resolvedTitle} />
+    <meta name="twitter:description" content={resolvedDescription} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
+    <link rel="icon" href={withBase("/favicon.ico")} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    {
+      jsonLd.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
+
+    <ClientRouter />
+  </head>
+  <body class="bg-gdg-page text-gdg-text min-h-screen flex flex-col font-body">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-gdg-primary focus:text-white focus:rounded-sm"
+    >
+      Saltar al contenido principal
+    </a>
+    <Header />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body></html
+>

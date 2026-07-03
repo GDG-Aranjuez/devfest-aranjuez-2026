@@ -1,0 +1,116 @@
+---
+import { isActive, navLinkClass } from "@/utils/nav";
+import { withBase } from "@/utils/path";
+import type { NavLink } from "@/types/nav";
+
+interface Props {
+  links: NavLink[];
+  pathname: string;
+  ticketsHref: string;
+  ticketsLabel: string;
+}
+
+const { links, pathname, ticketsHref, ticketsLabel } = Astro.props;
+const linkBase =
+  "flex items-center justify-center h-12 w-full text-[15px] font-medium transition-colors";
+---
+
+<div
+  id="nav-mobile"
+  class="hidden lg:hidden fixed inset-0 z-50 bg-gdg-surface"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menú de navegación"
+>
+  <div class="flex flex-col items-end px-6 pt-4 pb-16 h-full">
+    <button
+      id="nav-close"
+      type="button"
+      class="flex items-center justify-center size-12 text-gdg-text-secondary hover:text-gdg-text transition-colors"
+      aria-label="Cerrar menú"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M2 2l12 12M14 2L2 14"></path>
+      </svg>
+    </button>
+
+    <nav
+      class="flex flex-col items-center gap-10 w-full mt-6 flex-1"
+      aria-label="Navegación móvil"
+    >
+      <div class="flex flex-col items-center gap-6 w-full max-w-[200px]">
+        {
+          links.map(({ href, label }) => {
+            const active = isActive(pathname, href);
+            return (
+              <a
+                href={withBase(href)}
+                class={navLinkClass(active, linkBase)}
+                aria-current={active ? "page" : undefined}
+              >
+                {label}
+              </a>
+            );
+          })
+        }
+      </div>
+      <a
+        href={withBase(ticketsHref)}
+        class="flex items-center justify-center h-10 w-full max-w-[200px] px-6 rounded-sm bg-gdg-primary text-white text-[15px] font-medium hover:bg-gdg-primary/90 transition-colors"
+      >
+        {ticketsLabel}
+      </a>
+    </nav>
+  </div>
+</div>
+
+<script>
+  function initMobileNav() {
+    const toggle = document.getElementById("nav-toggle");
+    const closeBtn = document.getElementById("nav-close");
+    const menu = document.getElementById("nav-mobile");
+    const iconOpen = document.getElementById("icon-open");
+    const iconClose = document.getElementById("icon-close");
+
+    if (!toggle || !closeBtn || !menu || !iconOpen || !iconClose) return;
+
+    function setOpen(open: boolean) {
+      toggle?.setAttribute("aria-expanded", String(open));
+      menu?.classList.toggle("hidden", !open);
+      iconOpen?.classList.toggle("hidden", open);
+      iconClose?.classList.toggle("hidden", !open);
+      document.body.classList.toggle("overflow-hidden", open);
+    }
+
+    toggle.onclick = () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    };
+
+    closeBtn.onclick = () => setOpen(false);
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.onclick = () => setOpen(false);
+    });
+
+    document.onkeydown = (e) => {
+      if (
+        e.key === "Escape" &&
+        toggle.getAttribute("aria-expanded") === "true"
+      ) {
+        setOpen(false);
+        toggle.focus();
+      }
+    };
+  }
+
+  document.addEventListener("astro:page-load", initMobileNav);
+</script>

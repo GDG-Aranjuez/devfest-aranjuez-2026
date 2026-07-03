@@ -1,0 +1,20 @@
+---
+import ComingSoon from "@/components/shared/ComingSoon.astro";
+import { comingSoonPages } from "@/data/coming-soon";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { sectionDescription } from "@/lib/seo";
+
+export function getStaticPaths() {
+  return comingSoonPages.map(({ slug, title, description }) => ({
+    params: { section: slug },
+    props: { title, description },
+  }));
+}
+
+const { title, description } = Astro.props;
+const metaDescription = sectionDescription(title, description);
+---
+
+<BaseLayout title={title} description={metaDescription}>
+  <ComingSoon title={title} description={description} />
+</BaseLayout>

@@ -1,0 +1,59 @@
+name: Bug report
+description: Report something broken on the website or in the repo
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the GDG Aranjuez site. Please search [existing issues](https://github.com/GDG-Aranjuez/devfest-aranjuez-2026/issues) before opening a new one.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly and include what you expected instead.
+      placeholder: The mobile menu stays open after navigation...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: List the steps so someone else can reproduce the issue.
+      placeholder: |
+        1. Open the site on a phone-sized viewport
+        2. Open the navigation menu
+        3. Tap a link
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Home page
+        - Navigation / header / footer
+        - Event pages (agenda, speakers, tickets, etc.)
+        - Content / copy
+        - Build / CI / deployment
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser / device
+      placeholder: Chrome 131 on Android 15
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of conduct
+      options:
+        - label: I agree to follow the [Code of Conduct](../../CODE_OF_CONDUCT.md)
+          required: true

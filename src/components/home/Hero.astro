@@ -1,0 +1,76 @@
+---
+import Countdown from "@/components/home/Countdown.astro";
+import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
+import { hero } from "@/data/hero";
+import { withBase } from "@/utils/path";
+---
+
+<Section
+  class="bg-gdg-page py-10 lg:py-(--spacing-hero-py-desktop)"
+  ariaLabelledby="hero-heading"
+>
+  <Container>
+    <div class="flex flex-col lg:flex-row lg:items-center lg:gap-6">
+      <div class="flex-1 min-w-0 hero-copy">
+        <p class="pb-4 text-base font-medium">
+          <span class="text-gdg-hero-emphasis lg:text-gdg-text"
+            >{hero.location}</span
+          >
+          <span class="text-gdg-text-muted"> · {hero.dates}</span>
+        </p>
+
+        <h1 id="hero-heading" class="heading-hero pb-6">
+          <span class="text-gdg-hero-muted lg:hidden">{hero.titleLead}</span>
+          <span class="text-gdg-hero-emphasis lg:hidden"
+            >{hero.titleHighlight}</span
+          >
+          <span class="hidden lg:block text-gdg-text">
+            {
+              hero.titleDesktopLines.map((line) => (
+                <span class="hero-heading-line">{line}</span>
+              ))
+            }
+          </span>
+        </h1>
+
+        <p class="text-lead pb-10">{hero.subtitle}</p>
+
+        <div
+          class="hero-cta mx-auto flex w-fit max-w-full flex-col items-center lg:mx-0 lg:items-start"
+        >
+          <Countdown
+            class="justify-center lg:justify-start pb-8 pt-8 lg:pt-0 lg:pb-10"
+          />
+
+          <a
+            href={withBase(hero.cta.href)}
+            class="btn-primary btn-primary--block w-full lg:w-auto"
+          >
+            {hero.cta.label}
+          </a>
+
+          <p
+            class="w-full pt-4 text-center text-sm text-gdg-text-muted lg:text-left"
+          >
+            {hero.footnote}
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="hidden lg:block shrink-0 w-[415px] self-stretch min-h-[464px] rounded-sm bg-gdg-surface-mobile/60 hero-visual"
+        role="img"
+        aria-label={hero.visual.ariaLabel}
+      >
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .hero-visual {
+    background-image: radial-gradient(circle, #ffffff 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+  }
+</style>

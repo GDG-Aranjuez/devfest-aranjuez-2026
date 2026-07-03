@@ -1,0 +1,67 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={["hero-countdown flex items-start gap-3", className]}
+  aria-label="Cuenta atrás para el evento"
+  role="timer"
+>
+  <div class="flex flex-col items-center gap-0.5">
+    <span class="countdown-num" data-countdown="days">--</span>
+    <span class="countdown-label">días</span>
+  </div>
+  <span class="countdown-sep" aria-hidden="true">:</span>
+  <div class="flex flex-col items-center gap-0.5">
+    <span class="countdown-num" data-countdown="hours">--</span>
+    <span class="countdown-label">horas</span>
+  </div>
+  <span class="countdown-sep" aria-hidden="true">:</span>
+  <div class="flex flex-col items-center gap-0.5">
+    <span class="countdown-num" data-countdown="minutes">--</span>
+    <span class="countdown-label">minutos</span>
+  </div>
+  <span class="countdown-sep" aria-hidden="true">:</span>
+  <div class="flex flex-col items-center gap-0.5">
+    <span class="countdown-num" data-countdown="seconds">--</span>
+    <span class="countdown-label">segundos</span>
+  </div>
+</div>
+
+<script>
+  const EVENT_START = new Date("2026-10-24T09:00:00+02:00");
+
+  let countdownInterval: ReturnType<typeof setInterval> | undefined;
+
+  function tick() {
+    const diff = Math.max(0, EVENT_START.getTime() - Date.now());
+    const days = Math.floor(diff / 86_400_000);
+    const hours = Math.floor((diff % 86_400_000) / 3_600_000);
+    const minutes = Math.floor((diff % 3_600_000) / 60_000);
+    const seconds = Math.floor((diff % 60_000) / 1_000);
+
+    document.querySelectorAll(".hero-countdown").forEach((root) => {
+      const set = (key: string, val: number) => {
+        const el = root.querySelector(`[data-countdown="${key}"]`);
+        if (el) el.textContent = String(val);
+      };
+      set("days", days);
+      set("hours", hours);
+      set("minutes", minutes);
+      set("seconds", seconds);
+    });
+  }
+
+  function initCountdown() {
+    tick();
+    if (countdownInterval) clearInterval(countdownInterval);
+    countdownInterval = setInterval(tick, 1_000);
+  }
+
+  initCountdown();
+  document.addEventListener("astro:page-load", initCountdown);
+</script>

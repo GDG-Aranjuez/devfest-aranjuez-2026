@@ -1,0 +1,131 @@
+---
+import LinkList from "@/components/layout/LinkList.astro";
+import SocialLinks from "@/components/layout/SocialLinks.astro";
+import Container from "@/components/ui/Container.astro";
+import { footerMeta, footerMobileNav, footerSections } from "@/data/footer";
+import { withBase } from "@/utils/path";
+---
+
+<footer class="bg-gdg-surface-mobile md:bg-gdg-surface">
+  <div class="md:hidden">
+    <Container class="flex flex-col gap-8 pt-14 pb-10">
+      <div class="flex flex-col gap-3">
+        <a href={withBase("/")} class="inline-flex">
+          <img
+            src={withBase("/logo.png")}
+            alt="GDG Aranjuez"
+            width="80"
+            height="40"
+            class="h-10 w-auto"
+          />
+        </a>
+        <p class="text-[13px] text-gdg-text-muted leading-[1.5]">
+          {footerMeta.tagline}
+        </p>
+        <SocialLinks variant="mobile" />
+      </div>
+
+      <div class="panel">
+        <LinkList links={footerMobileNav} />
+      </div>
+
+      <hr class="border-gdg-border" />
+
+      <div class="flex flex-col gap-2">
+        <a
+          href={withBase(footerMeta.help.href)}
+          class="flex items-center gap-2 py-3 text-[14px] text-gdg-text-help hover:text-gdg-text transition-colors"
+        >
+          <img
+            src={withBase("/help-icon.png")}
+            alt=""
+            width="20"
+            height="20"
+            class="size-5 opacity-60"
+            aria-hidden="true"
+          />
+          {footerMeta.help.label}
+        </a>
+        <a
+          href={withBase(footerMeta.conduct.href)}
+          class="py-3 text-[14px] text-gdg-text-secondary hover:text-gdg-text transition-colors"
+        >
+          {footerMeta.conduct.label}
+        </a>
+        <p class="py-3 text-[13px] text-gdg-text-secondary">
+          {footerMeta.copyright}
+        </p>
+      </div>
+    </Container>
+  </div>
+
+  <div class="hidden md:flex w-full">
+    <Container class="flex flex-col gap-12 py-20 md:px-(--section-px-desktop)">
+      <div class="grid grid-cols-4 gap-0 w-full">
+        <div class="flex flex-col gap-4 pr-4">
+          <a href={withBase("/")} class="inline-flex">
+            <img
+              src={withBase("/logo.png")}
+              alt="GDG Aranjuez"
+              width="100"
+              height="40"
+              class="h-10 w-auto"
+            />
+          </a>
+          <p class="text-sm text-gdg-text-muted leading-[1.5]">
+            {footerMeta.tagline}
+          </p>
+          <SocialLinks variant="desktop" />
+        </div>
+
+        {
+          footerSections.map(({ title, links }) => (
+            <div class="flex flex-col gap-4">
+              <h3 class="text-sm font-medium text-gdg-text">{title}</h3>
+              <ul class="flex flex-col gap-4">
+                {links.map(({ href, label }) => (
+                  <li>
+                    <a
+                      href={withBase(href)}
+                      class="text-sm text-gdg-text-secondary hover:text-gdg-text transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="flex items-center justify-between border-t border-gdg-border pt-6"
+      >
+        <a
+          href={withBase(footerMeta.conduct.href)}
+          class="text-sm text-gdg-text-secondary hover:text-gdg-text transition-colors"
+        >
+          {footerMeta.conduct.label}
+        </a>
+        <a
+          href={withBase(footerMeta.help.href)}
+          class="flex items-center gap-2 text-[13px] text-gdg-text-help hover:text-gdg-text transition-colors"
+        >
+          <img
+            src={withBase("/help-icon.png")}
+            alt=""
+            width="20"
+            height="20"
+            class="size-5 opacity-60"
+            aria-hidden="true"
+          />
+          {footerMeta.help.label}
+        </a>
+        <span class="text-sm text-gdg-text-secondary"
+          >{footerMeta.copyright}</span
+        >
+      </div>
+    </Container>
+  </div>
+</footer>
