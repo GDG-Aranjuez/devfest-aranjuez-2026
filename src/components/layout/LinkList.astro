@@ -1,0 +1,27 @@
+---
+import type { FooterLink } from "@/types/footer";
+import { withBase } from "@/utils/path";
+
+interface Props {
+  links: FooterLink[];
+  class?: string;
+}
+
+const { links, class: className = "" } = Astro.props;
+---
+
+<nav
+  class:list={["link-columns link-columns--adaptive", className]}
+  aria-label="Enlaces del pie de página"
+>
+  {
+    links.map((link) => (
+      <a
+        href={withBase(link.href)}
+        class="py-3 text-[15px] text-gdg-text-secondary hover:text-gdg-text transition-colors"
+      >
+        {link.mobileLabel ?? link.label}
+      </a>
+    ))
+  }
+</nav>

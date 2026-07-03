@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: GDG Aranjuez community
+    url: https://www.linkedin.com/company/gdg-aranjuez
+    about: Questions about the community or event that are not a code change
+  - name: Email the organizers
+    url: mailto:gdgaranjuez@gmail.com
+    about: Private or sensitive matters

@@ -1,0 +1,37 @@
+---
+import Icon from "@/components/ui/Icon.astro";
+import { socialLinks } from "@/data/footer";
+import type { IconName } from "@/types/icon";
+
+interface Props {
+  variant?: "mobile" | "desktop";
+}
+
+const { variant = "mobile" } = Astro.props;
+
+const linkClass =
+  variant === "mobile"
+    ? "size-12 flex items-center justify-center text-gdg-text-secondary hover:text-gdg-text transition-colors"
+    : "size-10 flex items-center justify-center rounded-sm bg-gdg-social/40 text-gdg-text-secondary hover:text-gdg-text hover:bg-gdg-social/60 transition-colors";
+
+const iconSizes: Record<"mobile" | "desktop", Record<IconName, number>> = {
+  mobile: { linkedin: 20, x: 18 },
+  desktop: { linkedin: 16, x: 16 },
+};
+---
+
+<div class:list={["flex gap-3", variant === "desktop" && "pt-2"]}>
+  {
+    socialLinks.map(({ href, label, icon }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        class={linkClass}
+      >
+        <Icon name={icon} size={iconSizes[variant][icon]} />
+      </a>
+    ))
+  }
+</div>

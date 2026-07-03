@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "./variables.css";
+@import "./typography.css";
+
+/*
+ * Responsive convention (layout breakpoint: lg / 1024px)
+ * - Below lg: mobile layout (stack, hamburger nav, footer list)
+ * - lg and up: desktop layout (row, inline nav, footer grid)
+ * - md/sm: fine-tuning only, never structural layout changes
+ */
+
+html {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--color-gdg-page);
+  color: var(--color-gdg-text);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@layer components {
+  .panel {
+    container-type: inline-size;
+    container-name: panel;
+  }
+
+  .link-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @container panel (min-width: 20rem) {
+    .link-columns--adaptive {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.5rem 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+---
+import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
+import { comingSoonContent } from "@/data/coming-soon";
+import { withBase } from "@/utils/path";
+
+interface Props {
+  title?: string;
+  heading?: string;
+  description?: string;
+}
+
+const {
+  title,
+  heading = comingSoonContent.heading,
+  description = comingSoonContent.defaultDescription,
+} = Astro.props;
+
+const headingId = "coming-soon-heading";
+---
+
+<Section ariaLabelledby={headingId}>
+  <Container>
+    <div class="mx-auto max-w-xl text-center lg:text-left">
+      {
+        title && (
+          <p class="pb-4 text-base font-medium text-gdg-text-muted">{title}</p>
+        )
+      }
+
+      <h1 id={headingId} class="heading-hero pb-6 text-gdg-text">
+        {heading}
+      </h1>
+
+      <p class="text-lead mx-auto pb-10 lg:mx-0">{description}</p>
+
+      <a
+        href={withBase(comingSoonContent.backHref)}
+        class="btn-primary btn-primary--block"
+      >
+        {comingSoonContent.backLabel}
+      </a>
+    </div>
+  </Container>
+</Section>
