@@ -4,7 +4,9 @@ import { porQueVenir } from "@/data/porQuevenir";
 const highlightedLetter = porQueVenir.highlightedLetter;
 const letterIndex = porQueVenir.title.indexOf(highlightedLetter);
 const titleBefore =
-  letterIndex >= 0 ? porQueVenir.title.slice(0, letterIndex) : porQueVenir.title;
+  letterIndex >= 0
+    ? porQueVenir.title.slice(0, letterIndex)
+    : porQueVenir.title;
 const titleAfter =
   letterIndex >= 0
     ? porQueVenir.title.slice(letterIndex + highlightedLetter.length)
@@ -124,7 +126,7 @@ const titleAfter =
     {titleBefore}<u>{highlightedLetter}</u>{titleAfter}
   </h2>
 
-  <hr class="why-section__divider">
+  <hr class="why-section__divider" />
 
   <div class="why-grid">
     {
