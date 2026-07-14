@@ -123,7 +123,7 @@ const titleAfter =
 <section class="why-section">
   <p class="why-section__eyebrow">{porQueVenir.eyebrow}</p>
   <h2 class="why-section__title">
-    {titleBefore}<u>{highlightedLetter}</u>{titleAfter}
+    {titleBefore}{letterIndex >= 0 && <u>{highlightedLetter}</u>}{titleAfter}
   </h2>
 
   <hr class="why-section__divider" />
