@@ -1,0 +1,54 @@
+---
+import Container from "@/components/ui/Container.astro";
+import { tickerItems } from "@/data/ticker";
+
+const track = [
+  ...tickerItems.map((label) => ({ label, hidden: false })),
+  ...tickerItems.map((label) => ({ label, hidden: true })),
+];
+---
+
+<section aria-labelledby="tech-ticker-heading" class="overflow-hidden py-20">
+  <h2 id="tech-ticker-heading" class="sr-only">Tecnologías del evento</h2>
+
+  <Container>
+    <div class="rotate-3 overflow-hidden bg-gdg-ticker py-4">
+      <ul class="ticker-track flex w-max items-center gap-8 px-8">
+        {
+          track.map(({ label, hidden }) => (
+            <li
+              class="flex items-center gap-8 whitespace-nowrap"
+              aria-hidden={hidden ? "true" : undefined}
+            >
+              <span class="text-base font-medium text-gdg-text">{label}</span>
+              <span aria-hidden="true" class="text-base text-gdg-text">
+                ·
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .ticker-track {
+    animation: ticker-scroll 32s linear infinite;
+  }
+
+  @keyframes ticker-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none;
+    }
+  }
+</style>
