@@ -1,6 +1,6 @@
 import { site } from "@/data/site";
-import { withBase } from "@/utils/path";
 import type { StructuredData } from "@/types/seo";
+import { withBase } from "@/utils/path";
 
 export function formatPageTitle(pageTitle?: string): string {
   if (!pageTitle || pageTitle === site.title) {
@@ -20,7 +20,7 @@ export function sectionDescription(
 ): string {
   return (
     description ??
-    `${title} del DevFest GDG Aranjuez 2026. Información disponible próximamente.`
+    `${title} de FresON Fest 2026 (GDG Aranjuez). Información disponible próximamente.`
   );
 }
 
