@@ -16,8 +16,8 @@ html {
 }
 
 body {
-  background-color: var(--color-gdg-page);
-  color: var(--color-gdg-text);
+  background-color: var(--color-page);
+  color: var(--color-body);
 }
 
 .sr-only {
@@ -41,14 +41,14 @@ body {
   .link-columns {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--spacing-size-4);
   }
 
   @container panel (min-width: 20rem) {
     .link-columns--adaptive {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.5rem 1.5rem;
+      gap: var(--spacing-size-4) var(--spacing-size-7);
     }
   }
 }

@@ -1,46 +1,202 @@
+/*
+ * Type roles use .type-* (not text-* for font-size) so color utilities
+ * like text-heading / text-subtitle stay free. Sizes: --font-size-* in
+ * variables.css. Breakpoint for desktop type: lg (1024px).
+ */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
 .font-body {
   font-family: var(--font-body);
 }
 
 @layer components {
-  .heading-hero {
+  .type-h1 {
     font-family: var(--font-display);
-    font-size: var(--hero-title-size);
+    font-size: var(--font-size-h1);
     font-weight: 800;
+    line-height: 1;
+    color: var(--color-heading);
+  }
+
+  .type-h2 {
+    font-family: var(--font-display);
+    font-size: var(--font-size-h2);
+    font-weight: 700;
     line-height: 1.1;
+    color: var(--color-heading);
+  }
+
+  .type-h3 {
+    font-family: var(--font-display);
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--color-heading);
+  }
+
+  .type-h4 {
+    font-family: var(--font-display);
+    font-size: var(--font-size-h4);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--color-heading);
+  }
+
+  .type-h5 {
+    font-family: var(--font-display);
+    font-size: var(--font-size-h5);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--color-heading);
+  }
+
+  .type-highlight {
+    font-family: var(--font-display);
+    font-size: var(--font-size-highlight);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-highlighted);
+  }
+
+  .type-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--font-size-subtitle);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-subtitle);
+  }
+
+  .type-eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--font-size-eyebrow);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--color-subtitle);
+  }
+
+  .type-eyebrow-medium {
+    font-family: var(--font-body);
+    font-size: var(--font-size-eyebrow);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-subtitle);
+  }
+
+  .type-paragraph-l {
+    font-family: var(--font-body);
+    font-size: var(--font-size-paragraph-l);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-body);
+  }
+
+  .type-paragraph-m {
+    font-family: var(--font-body);
+    font-size: var(--font-size-paragraph-m);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-body);
+  }
+
+  .type-paragraph-s {
+    font-family: var(--font-body);
+    font-size: var(--font-size-paragraph-s);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-body);
+  }
+
+  .type-caption {
+    font-family: var(--font-body);
+    font-size: var(--font-size-caption);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-muted);
+  }
+
+  .type-label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-label);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-muted);
+  }
+
+  .link {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    transition: color 0.15s;
+  }
+
+  .link:hover {
+    color: var(--color-link-hover);
   }
 
   @media (width >= 64rem) {
-    .heading-hero {
+    .type-h1 {
+      font-size: var(--font-size-h1-lg);
+      line-height: 0.9;
+    }
+
+    .type-h2 {
+      font-size: var(--font-size-h2-lg);
+      font-weight: 600;
+    }
+
+    .type-h3 {
+      font-size: var(--font-size-h3-lg);
+    }
+
+    .type-h4 {
+      font-size: var(--font-size-h4-lg);
+    }
+
+    .type-h5 {
+      font-size: var(--font-size-h5-lg);
+    }
+
+    .type-highlight {
+      font-family: var(--font-body);
+      font-size: var(--font-size-highlight-lg);
       font-weight: 700;
     }
 
-    .hero-copy {
-      container-type: inline-size;
-      container-name: hero-copy;
+    .type-subtitle {
+      font-size: var(--font-size-subtitle-lg);
+      line-height: 1.2;
     }
 
-    @container hero-copy (min-width: 0) {
-      .heading-hero {
-        font-size: clamp(2rem, 8.5cqi, var(--hero-title-size-lg));
-      }
+    .type-eyebrow,
+    .type-eyebrow-medium {
+      font-size: var(--font-size-eyebrow-lg);
     }
 
-    .hero-heading-line {
-      display: block;
+    .type-eyebrow-medium {
+      font-weight: 400;
     }
-  }
 
-  .text-lead {
-    font-size: 1rem;
-    line-height: 1.3;
-    color: var(--color-gdg-text-muted);
-  }
+    .type-paragraph-l {
+      font-size: var(--font-size-paragraph-l-lg);
+    }
 
-  @media (width >= 64rem) {
-    .text-lead {
-      line-height: 1.6;
-      max-width: 30rem;
+    .type-paragraph-m {
+      font-size: var(--font-size-paragraph-m-lg);
+    }
+
+    .type-paragraph-s {
+      font-size: var(--font-size-paragraph-s-lg);
+    }
+
+    .type-caption {
+      font-size: var(--font-size-caption-lg);
+    }
+
+    .type-label {
+      font-size: var(--font-size-label-lg);
     }
   }
 
@@ -48,81 +204,141 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 3.5rem;
-    padding-inline: 1.5rem;
-    background-color: var(--color-gdg-primary);
-    color: white;
+    height: var(--spacing-size-11);
+    padding-inline: var(--spacing-size-7);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-action-primary-bg);
+    color: var(--color-action-primary-text);
+    font-family: var(--font-body);
+    font-size: var(--font-size-btn-cta);
     font-weight: 500;
-    transition: background-color 0.15s;
+    line-height: 1;
+    transition:
+      background-color 0.15s,
+      color 0.15s;
   }
 
   .btn-primary:hover {
-    background-color: color-mix(
-      in srgb,
-      var(--color-gdg-primary) 90%,
-      transparent
-    );
+    background-color: var(--color-action-primary-hover-bg);
+    color: var(--color-action-primary-hover-text);
+  }
+
+  .btn-primary:active {
+    background-color: var(--color-action-primary-pressed-bg);
+    color: var(--color-action-primary-pressed-text);
+  }
+
+  .btn-primary:disabled,
+  .btn-primary[aria-disabled="true"] {
+    background-color: var(--color-action-primary-disabled-bg);
+    color: var(--color-action-primary-disabled-text);
+    pointer-events: none;
   }
 
   .btn-primary--block {
     display: flex;
     width: 100%;
-    font-size: 1.25rem;
   }
 
   @media (width >= 64rem) {
     .btn-primary--block {
       display: inline-flex;
       width: auto;
-      font-size: 1.125rem;
-      padding-inline: 2rem;
+      padding-inline: var(--spacing-size-8);
     }
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: var(--spacing-size-2) 0;
+    background: transparent;
+    color: var(--color-action-ghost-text);
+    font-family: var(--font-body);
+    font-size: var(--font-size-btn-ghost);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    transition: color 0.15s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-action-ghost-hover-text);
+  }
+
+  .btn-ghost:active {
+    color: var(--color-action-ghost-pressed-text);
+  }
+
+  .btn-ghost:disabled,
+  .btn-ghost[aria-disabled="true"] {
+    color: var(--color-action-ghost-disabled-text);
+    pointer-events: none;
+  }
+
+  .btn-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: var(--font-size-btn-menu);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-heading);
+    transition: color 0.15s;
+  }
+
+  .btn-menu:hover,
+  .btn-menu[aria-current="page"] {
+    color: var(--color-link);
   }
 
   .countdown-num {
     font-family: var(--font-display);
-    font-size: var(--countdown-num-size);
-    font-weight: 800;
-    line-height: 1;
-    color: var(--color-gdg-countdown);
+    font-size: var(--font-size-highlight);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-heading);
     opacity: 0.9;
   }
 
   @media (width >= 64rem) {
     .countdown-num {
-      font-size: var(--countdown-num-size-lg);
-      font-weight: 700;
+      font-size: var(--font-size-highlight-lg);
       opacity: 1;
     }
   }
 
   .countdown-label {
-    font-size: 1rem;
-    line-height: 1.25;
-    color: var(--color-gdg-text-muted);
+    font-family: var(--font-body);
+    font-size: var(--font-size-eyebrow);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--color-subtitle);
   }
 
   @media (width >= 64rem) {
     .countdown-label {
-      font-size: 0.875rem;
+      font-size: var(--font-size-eyebrow-lg);
     }
   }
 
   .countdown-sep {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: var(--spacing-size-7);
     font-weight: 800;
-    line-height: 1;
-    align-self: flex-start;
-    padding-top: 0.5rem;
-    color: color-mix(in srgb, var(--color-gdg-countdown) 20%, transparent);
+    line-height: 1.2;
+    height: 2.375rem;
+    display: flex;
+    align-items: center;
+    color: var(--color-countdown-sep);
   }
 
   @media (width >= 64rem) {
     .countdown-sep {
       font-weight: 700;
-      padding-top: 0.25rem;
-      color: var(--color-gdg-countdown);
     }
   }
 }

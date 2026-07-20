@@ -1,0 +1,41 @@
+---
+import { withBase } from "@/utils/path";
+
+interface Props {
+  href: string;
+  label: string;
+  footnote: string;
+  class?: string;
+  block?: boolean;
+  /** Footnote alignment. Desktop hero uses start; MidCta stays center. */
+  noteAlign?: "center" | "start";
+}
+
+const {
+  href,
+  label,
+  footnote,
+  class: className = "",
+  block = true,
+  noteAlign = "center",
+} = Astro.props;
+---
+
+<div class:list={["flex w-full flex-col items-stretch", className]}>
+  <a
+    href={withBase(href)}
+    class:list={["btn-primary", block && "btn-primary--block"]}
+  >
+    {label}
+  </a>
+  <p
+    class:list={[
+      "type-caption py-size-6 text-body",
+      noteAlign === "start"
+        ? "text-center lg:text-left lg:py-size-4"
+        : "text-center",
+    ]}
+  >
+    {footnote}
+  </p>
+</div>

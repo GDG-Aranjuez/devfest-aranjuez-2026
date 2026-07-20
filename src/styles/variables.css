@@ -1,43 +1,178 @@
+/*
+ * Design tokens — FresON Fest 2026 (Figma, dark).
+ *
+ * Tailwind v4 @theme collision rules:
+ * - Primitives stay in :root as --palette-* (not @theme) so they do not
+ *   override Tailwind orange/stone/amber.
+ * - Font sizes stay in :root as --font-size-* so they do not create
+ *   text-* utilities that clash with color utilities (e.g. text-subtitle).
+ * - @theme only exposes semantics + spacing/radius the UI should use.
+ */
+
+:root {
+  --palette-orange-25: #fefaf5;
+  --palette-orange-50: #d5cabf;
+  --palette-orange-100: #fcd4b1;
+  --palette-orange-200: #f49e52;
+  --palette-orange-300: #f37d16;
+  --palette-orange-400: #cc6512;
+  --palette-orange-500: #a34d0f;
+  --palette-orange-600: #6b3108;
+  --palette-orange-700: #372925;
+
+  --palette-stone-50: #f2f0ec;
+  --palette-stone-100: #c9c5bc;
+  --palette-stone-200: #898276;
+  --palette-stone-300: #43403d;
+  --palette-stone-400: #272421;
+  --palette-stone-500: #1a1814;
+  --palette-stone-600: #0d0c0a;
+
+  --palette-amber-100: #a33610;
+
+  --font-size-h1: 3.5rem; /* 56 mobile */
+  --font-size-h2: 2.5rem; /* 40 */
+  --font-size-h3: 2rem; /* 32 */
+  --font-size-h4: 1.5rem; /* 24 */
+  --font-size-h5: 1.25rem; /* 20 */
+  --font-size-highlight: 2.5rem; /* 40 */
+  --font-size-subtitle: 1rem; /* 16 */
+  --font-size-eyebrow: 1rem;
+  --font-size-paragraph-l: 1rem;
+  --font-size-paragraph-m: 0.875rem; /* 14 */
+  --font-size-paragraph-s: 0.75rem; /* 12 */
+  --font-size-caption: 0.875rem;
+  --font-size-label: 0.75rem;
+  --font-size-btn-cta: 1.25rem; /* 20 */
+  --font-size-btn-menu: 1rem;
+  --font-size-btn-ghost: 0.875rem;
+
+  --font-size-h1-lg: 6rem; /* 96 desktop */
+  --font-size-h2-lg: 4rem; /* 64 */
+  --font-size-h3-lg: 2.5rem; /* 40 */
+  --font-size-h4-lg: 2rem; /* 32 */
+  --font-size-h5-lg: 1.5rem; /* 24 */
+  --font-size-highlight-lg: 4rem; /* 64 */
+  --font-size-subtitle-lg: 1.25rem; /* 20 */
+  --font-size-eyebrow-lg: 1.25rem;
+  --font-size-paragraph-l-lg: 1.25rem;
+  --font-size-paragraph-m-lg: 1rem;
+  --font-size-paragraph-s-lg: 0.875rem;
+  --font-size-caption-lg: 1rem;
+  --font-size-label-lg: 0.875rem;
+}
+
 @theme {
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
-  --color-gdg-primary: #4285f4;
-  --color-gdg-page: #fbfbfb;
-  --color-gdg-surface: #f5f5f5;
-  --color-gdg-surface-mobile: #dfdfdf;
-  --color-gdg-text: #231406;
-  --color-gdg-text-secondary: #6d6d6d;
-  --color-gdg-text-muted: #a09a90;
-  --color-gdg-text-help: #737373;
-  --color-gdg-border: #d3d3d3;
-  --color-gdg-social: #c9c9c9;
-  --color-gdg-hero-muted: #7c7c7c;
-  --color-gdg-hero-emphasis: #242424;
-  --color-gdg-countdown: #919191;
-  --color-gdg-ticker: #eaeaea;
+  --color-page: var(--palette-stone-600);
+  --color-surface: var(--palette-stone-500);
+  --color-surface-raised: var(--palette-orange-700);
 
-  --spacing-section-px-mobile: 1rem;
-  --spacing-section-px-desktop: 5rem;
-  --spacing-section-py-mobile: 2.5rem;
-  --spacing-section-py-desktop: 5.875rem;
-  --spacing-hero-py-desktop: 5.875rem;
+  --color-brand: var(--palette-orange-300);
+  --color-brand-hover: var(--palette-orange-200);
+  --color-brand-muted: var(--palette-stone-300);
 
-  --text-hero: 3rem;
-  --text-hero-lg: 3.5rem;
-  --text-countdown: 2rem;
-  --text-countdown-lg: 2.25rem;
+  --color-heading: var(--palette-orange-25);
+  --color-subtitle: var(--palette-orange-50);
+  --color-body: var(--palette-orange-50);
+  --color-muted: var(--palette-stone-200);
+  --color-on-brand: var(--palette-stone-600);
+  --color-link: var(--palette-orange-200);
+  --color-link-hover: var(--palette-orange-100);
+  --color-highlighted: var(--palette-orange-300);
+
+  --color-stroke: var(--palette-stone-400);
+  --color-stroke-strong: var(--palette-stone-300);
+  --color-stroke-brand: var(--palette-orange-300);
+
+  /* Prefer .btn-* over raw action color utilities */
+  --color-action-primary-bg: var(--palette-orange-300);
+  --color-action-primary-text: var(--palette-stone-600);
+  --color-action-primary-hover-bg: var(--palette-orange-200);
+  --color-action-primary-hover-text: var(--palette-stone-600);
+  --color-action-primary-pressed-bg: var(--palette-orange-400);
+  --color-action-primary-pressed-text: var(--palette-stone-50);
+  --color-action-primary-disabled-bg: var(--palette-stone-300);
+  --color-action-primary-disabled-text: var(--palette-stone-50);
+  --color-action-ghost-text: var(--palette-orange-200);
+  --color-action-ghost-hover-text: var(--palette-orange-100);
+  --color-action-ghost-pressed-text: var(--palette-orange-400);
+  --color-action-ghost-disabled-text: var(--palette-stone-200);
+
+  --color-agenda-time: var(--palette-stone-100);
+  --color-agenda-title: var(--palette-stone-50);
+  --color-agenda-highlight-bg: var(--palette-orange-700);
+  --color-agenda-highlight-text: var(--palette-orange-100);
+  --color-agenda-divider: var(--palette-stone-400);
+
+  --color-gradient: var(--palette-amber-100);
+  --color-pill-stroke: var(--palette-stone-100); /* Brego pill */
+  --color-countdown-sep: var(--palette-orange-700);
+  --color-inverse: var(--palette-stone-50); /* ticker / inverse surfaces */
+
+  --spacing-size-0: 0;
+  --spacing-size-1: 0.125rem; /* 2 */
+  --spacing-size-2: 0.25rem; /* 4 */
+  --spacing-size-3: 0.375rem; /* 6 */
+  --spacing-size-4: 0.5rem; /* 8 */
+  --spacing-size-5: 0.75rem; /* 12 */
+  --spacing-size-6: 1rem; /* 16 */
+  --spacing-size-7: 1.5rem; /* 24 */
+  --spacing-size-8: 2rem; /* 32 */
+  --spacing-size-9: 2.5rem; /* 40 */
+  --spacing-size-10: 3rem; /* 48 */
+  --spacing-size-11: 3.5rem; /* 56 */
+  --spacing-size-12: 4rem; /* 64 */
+  --spacing-size-13: 5rem; /* 80 */
+  --spacing-size-14: 6rem; /* 96 */
+  --spacing-size-15: 7.5rem; /* 120 */
+  --spacing-size-16: 9rem; /* 144 */
+
+  --radius-0: 0;
+  --radius-1: 0.125rem; /* 2 */
+  --radius-2: 0.25rem; /* 4 */
+  --radius-3: 0.375rem; /* 6 */
+  --radius-4: 0.5rem; /* 8 */
+  --radius-5: 0.75rem; /* 12 */
+  --radius-6: 1rem; /* 16 */
+  --radius-7: 1.5rem; /* 24 */
+  --radius-8: 2rem; /* 32 */
+  --radius-9: 2.5rem; /* 40 */
+  --radius-10: 3rem; /* 48 */
+  --radius-11: 3.5rem; /* 56 */
+  --radius-12: 4rem; /* 64 */
+  --radius-13: 5rem; /* 80 */
+  --radius-14: 6rem; /* 96 */
+  --radius-15: 7.5rem; /* 120 */
+  --radius-16: 9rem; /* 144 — use rounded-16, not rounded-full */
+  --radius-sm: var(--radius-1);
+  --radius-md: var(--radius-2);
+  --radius-lg: var(--radius-4);
+  --radius-xl: var(--radius-6);
+
+  --spacing-section-px-mobile: var(--spacing-size-6);
+  --spacing-section-px-desktop: var(--spacing-size-13);
+  --spacing-section-py-mobile: var(--spacing-size-9);
+  --spacing-section-py-desktop: var(--spacing-size-13);
+  --spacing-hero-py-desktop: var(--spacing-size-13);
+
+  --animate-ticker: ticker-scroll 55s linear infinite reverse;
+}
+
+@keyframes ticker-scroll {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 :root {
   --content-max: 75rem;
-  --nav-height: 3.5rem;
+  --nav-height: 5.25rem;
+
   --section-px-mobile: var(--spacing-section-px-mobile);
   --section-px-desktop: var(--spacing-section-px-desktop);
   --section-py-mobile: var(--spacing-section-py-mobile);
   --section-py-desktop: var(--spacing-section-py-desktop);
-  --hero-title-size: var(--text-hero);
-  --hero-title-size-lg: var(--text-hero-lg);
-  --countdown-num-size: var(--text-countdown);
-  --countdown-num-size-lg: var(--text-countdown-lg);
 }

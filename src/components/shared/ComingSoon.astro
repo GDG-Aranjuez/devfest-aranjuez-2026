@@ -22,17 +22,13 @@ const headingId = "coming-soon-heading";
 <Section ariaLabelledby={headingId}>
   <Container>
     <div class="mx-auto max-w-xl text-center lg:text-left">
-      {
-        title && (
-          <p class="pb-4 text-base font-medium text-gdg-text-muted">{title}</p>
-        )
-      }
+      {title && <p class="type-eyebrow-medium pb-size-4 text-muted">{title}</p>}
 
-      <h1 id={headingId} class="heading-hero pb-6 text-gdg-text">
+      <h1 id={headingId} class="type-h1 pb-size-6">
         {heading}
       </h1>
 
-      <p class="text-lead mx-auto pb-10 lg:mx-0">{description}</p>
+      <p class="type-subtitle mx-auto pb-size-9 lg:mx-0">{description}</p>
 
       <a
         href={withBase(comingSoonContent.backHref)}
