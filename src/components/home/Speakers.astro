@@ -1,0 +1,181 @@
+---
+import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { speakers, speakersSection } from "@/data/speakers";
+---
+
+<Section aria-labelledby="speakers-heading" class="bg-gdg-page">
+  <Container>
+    <div class="mb-12">
+      <p class="text-base font-medium text-gdg-hero-emphasis mb-2">
+        {speakersSection.label}
+      </p>
+      <h2
+        id="speakers-heading"
+        class="text-4xl lg:text-5xl font-bold text-gdg-text mb-8"
+      >
+        {speakersSection.heading}
+      </h2>
+    </div>
+
+    <!-- Desktop Grid -->
+    <div class="hidden lg:grid lg:grid-cols-2 gap-8">
+      {
+        speakers.map((speaker) => (
+          <div class="bg-gdg-surface rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="w-full h-64 bg-gdg-surface-mobile/60 flex items-center justify-center">
+              <span class="text-gdg-text-muted font-medium">Foto</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gdg-text mb-2">
+                {speaker.name}
+              </h3>
+              <p class="text-sm font-medium text-gdg-hero-emphasis mb-3">
+                {speaker.role}
+              </p>
+              <p class="text-base text-gdg-text-muted mb-4">
+                {speaker.description}
+              </p>
+              <div class="flex gap-4">
+                {speaker.socialMedia.map((social) => (
+                  <a
+                    href={social.url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gdg-surface-mobile hover:bg-gdg-surface transition-colors"
+                    aria-label={`${speaker.name} ${social.platform}`}
+                  >
+                    <Icon name={social.icon} class="w-5 h-5 text-gdg-text" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Mobile Carousel -->
+    <div class="lg:hidden">
+      <div
+        class="carousel-container relative overflow-hidden"
+        role="region"
+        aria-label="Carrusel de ponentes"
+      >
+        <div
+          class="carousel-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory"
+          data-carousel
+        >
+          {
+            speakers.map((speaker) => (
+              <div class="carousel-slide flex-shrink-0 w-full snap-start">
+                <div class="bg-gdg-surface rounded-lg overflow-hidden">
+                  <div class="w-full h-80 bg-gdg-surface-mobile/60 flex items-center justify-center">
+                    <span class="text-gdg-text-muted font-medium">Foto</span>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold text-gdg-text mb-2">
+                      {speaker.name}
+                    </h3>
+                    <p class="text-sm font-medium text-gdg-hero-emphasis mb-3">
+                      {speaker.role}
+                    </p>
+                    <p class="text-base text-gdg-text-muted mb-4">
+                      {speaker.description}
+                    </p>
+                    <div class="flex gap-4">
+                      {speaker.socialMedia.map((social) => (
+                        <a
+                          href={social.url}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gdg-surface-mobile hover:bg-gdg-surface transition-colors"
+                          aria-label={`${speaker.name} ${social.platform}`}
+                        >
+                          <Icon
+                            name={social.icon}
+                            class="w-5 h-5 text-gdg-text"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="carousel-controls flex justify-center gap-2 mt-6">
+          {
+            speakers.map((_, index) => (
+              <button
+                class="carousel-dot h-2 w-2 rounded-full bg-gdg-text-muted transition-colors"
+                data-slide={index}
+                aria-label={`Ir a ponente ${index + 1}`}
+                aria-pressed={index === 0}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .carousel-track {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-dot {
+    cursor: pointer;
+  }
+
+  .carousel-dot.active {
+    background-color: var(--color-gdg-hero-emphasis);
+    width: 1.5rem;
+    transition: all 0.3s ease;
+  }
+</style>
+
+<script>
+  const carousel = document.querySelector("[data-carousel]") as HTMLElement | null;
+  const dots = document.querySelectorAll(".carousel-dot");
+
+  if (carousel) {
+    const updateActiveDot = () => {
+      const scrollLeft = carousel.scrollLeft;
+      const slideWidth = carousel.offsetWidth;
+      const activeIndex = Math.round(scrollLeft / slideWidth);
+
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.add("active");
+          dot.setAttribute("aria-pressed", "true");
+        } else {
+          dot.classList.remove("active");
+          dot.setAttribute("aria-pressed", "false");
+        }
+      });
+    };
+
+    carousel.addEventListener("scroll", updateActiveDot);
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        const slideWidth = carousel.offsetWidth;
+        carousel.scrollLeft = index * slideWidth;
+      });
+    });
+
+    // Initial update
+    updateActiveDot();
+  }
+</script>
