@@ -2,7 +2,7 @@ import type { FooterLink, FooterSection } from "@/types/footer";
 import type { IconName } from "@/types/icon";
 
 export const footerMeta = {
-  tagline: "GDG Aranjuez · Comunidad de desarrolladores Google en Aranjuez.",
+  tagline: "FresON Fest · Organizado por GDG Aranjuez.",
   copyright: "© 2026, GDG Aranjuez",
   help: { href: "/ayuda", label: "¿Necesitas ayuda?" },
   conduct: { href: "/codigo-conducta", label: "Código de conducta" },

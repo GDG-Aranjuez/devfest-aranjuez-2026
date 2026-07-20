@@ -8,27 +8,22 @@ import { withBase } from "@/utils/path";
 const pathname = Astro.url.pathname;
 ---
 
-<header
-  class="sticky top-0 z-50 w-full bg-gdg-surface border-b border-gdg-border/60"
->
+<header class="sticky top-0 z-50 w-full bg-page">
   <Container
-    class="h-(--nav-height) flex items-center justify-between md:px-(--section-px-desktop)"
+    class="flex items-center justify-between pt-size-7 pb-size-2 lg:py-size-6"
   >
-    <a href={withBase("/")} class="shrink-0 flex items-center h-(--nav-height)">
+    <a href={withBase("/")} class="shrink-0 flex items-center">
       <img
-        src={withBase("/logo.png")}
-        alt="GDG Aranjuez"
-        width="72"
-        height="40"
-        class="h-10 w-auto"
+        src={withBase("/brand/imagotipo-navbar.png")}
+        alt="FresON fest"
+        width="145"
+        height="51"
+        class="h-10 w-auto lg:h-[51px]"
       />
     </a>
 
     <DesktopNav links={mainNavLinks} pathname={pathname}>
-      <a
-        href={withBase(ticketsCta.href)}
-        class="inline-flex items-center h-10 px-6 rounded-sm bg-gdg-primary text-white text-[15px] font-medium hover:bg-gdg-primary/90 transition-colors"
-      >
+      <a href={withBase(ticketsCta.href)} class="btn-primary h-10">
         {ticketsCta.label}
       </a>
     </DesktopNav>
@@ -36,29 +31,30 @@ const pathname = Astro.url.pathname;
     <button
       id="nav-toggle"
       type="button"
-      class="lg:hidden flex items-center justify-center size-14 -mr-4 text-gdg-text-secondary hover:text-gdg-text transition-colors"
+      class="lg:hidden flex items-center justify-center size-size-11 text-heading hover:text-link transition-colors"
       aria-label="Abrir menú"
       aria-expanded="false"
       aria-controls="nav-mobile"
     >
       <svg
         id="icon-open"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
         fill="none"
         stroke="currentColor"
         stroke-width="1.5"
         stroke-linecap="round"
+        stroke-linejoin="round"
         aria-hidden="true"
       >
-        <path d="M3 6h18M3 12h18M3 18h18"></path>
+        <path d="M6 7.5h24M6 18h24M6 28.5h24"></path>
       </svg>
       <svg
         id="icon-close"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
         fill="none"
         stroke="currentColor"
         stroke-width="1.5"
@@ -66,7 +62,7 @@ const pathname = Astro.url.pathname;
         class="hidden"
         aria-hidden="true"
       >
-        <path d="M6 6l12 12M18 6L6 18"></path>
+        <path d="M9 9l18 18M27 9L9 27"></path>
       </svg>
     </button>
   </Container>

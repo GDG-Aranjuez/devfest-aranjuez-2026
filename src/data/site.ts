@@ -1,19 +1,20 @@
-/** Site-wide SEO and branding defaults */
 export const site = {
   name: "GDG Aranjuez",
-  title: "GDG Aranjuez 2026",
-  titleSuffix: "GDG Aranjuez 2026",
+  title: "FresON Fest 2026",
+  titleSuffix: "FresON Fest 2026",
   description:
-    "Comunidad de desarrolladores Google en Aranjuez. DevFest 24 y 25 de octubre de 2026.",
+    "FresON Fest 2026 — evento de GDG Aranjuez. 24 de octubre de 2026 en Aranjuez.",
   locale: "es_ES",
   language: "es",
   twitter: "@gdgaranjuez",
   ogImage: "/og.jpg" as string | undefined,
-  themeColor: "#4285f4",
+  themeColor: "#f37d16",
   event: {
-    name: "DevFest Aranjuez 2026",
+    name: "FresON Fest 2026",
     startDate: "2026-10-24",
-    endDate: "2026-10-25",
+    endDate: "2026-10-24",
+    /** Local start used by the hero countdown. */
+    startDateTime: "2026-10-24T09:00:00+02:00",
     location: "Aranjuez, España",
   },
 } as const;

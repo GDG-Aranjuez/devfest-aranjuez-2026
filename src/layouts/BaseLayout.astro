@@ -69,12 +69,30 @@ const jsonLd = mergeStructuredData(siteUrl, pageStructuredData);
     <meta name="twitter:description" content={resolvedDescription} />
     {socialImage && <meta name="twitter:image" content={socialImage} />}
 
+    <link rel="icon" href={withBase("/favicon.ico")} sizes="any" />
     <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
-    <link rel="icon" href={withBase("/favicon.ico")} />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href={withBase("/favicon-32.png")}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href={withBase("/favicon-16.png")}
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={withBase("/apple-touch-icon.png")}
+    />
+    <link rel="manifest" href={withBase("/site.webmanifest")} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
 
@@ -86,10 +104,10 @@ const jsonLd = mergeStructuredData(siteUrl, pageStructuredData);
 
     <ClientRouter />
   </head>
-  <body class="bg-gdg-page text-gdg-text min-h-screen flex flex-col font-body">
+  <body class="bg-page text-body min-h-screen flex flex-col font-body">
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-gdg-primary focus:text-white focus:rounded-sm"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-size-6 focus:py-size-4 focus:bg-brand focus:text-on-brand focus:rounded-sm"
     >
       Saltar al contenido principal
     </a>

@@ -1,12 +1,8 @@
 export const hero = {
-  location: "Aranjuez",
-  dates: "24 y 25 de Octubre 2026",
-  titleLead: "Aranjuez tiene algo que decirle al ",
+  dateLead: "24 de Octubre",
+  dateYear: "2026",
+  titleLead: "Aranjuez tiene algo que decirle al",
   titleHighlight: "mundo tech.",
-  titleDesktopLines: [
-    "Aranjuez tiene algo que",
-    "decirle al mundo tech.",
-  ] as const,
   subtitle:
     "Y tú estás invitado. Sin postureo, sin distancia, solo gente real haciendo cosas reales.",
   cta: {
@@ -14,7 +10,11 @@ export const hero = {
     label: "Reserva tu plaza",
   },
   footnote: "Plazas disponibles · Aforo limitado",
+  benefit: {
+    label: "Tu entrada ayuda a la Asociación Brego",
+    href: "https://www.fundacionbrego.org/",
+  },
   visual: {
-    ariaLabel: "Ilustración del evento DevFest Aranjuez",
+    ariaLabel: "Ilustración del evento FresON Fest",
   },
 } as const;
