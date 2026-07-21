@@ -147,7 +147,9 @@ import { speakers, speakersSection } from "@/data/speakers";
 </style>
 
 <script>
-  const carousel = document.querySelector("[data-carousel]") as HTMLElement | null;
+  const carousel = document.querySelector(
+    "[data-carousel]"
+  ) as HTMLElement | null;
   const dots = document.querySelectorAll(".carousel-dot");
 
   if (carousel) {

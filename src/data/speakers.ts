@@ -16,7 +16,8 @@ export const speakers: Speaker[] = [
     id: "speaker-1",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     socialMedia: [
       {
         platform: "x",
@@ -34,7 +35,8 @@ export const speakers: Speaker[] = [
     id: "speaker-2",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     socialMedia: [
       {
         platform: "x",
@@ -52,7 +54,8 @@ export const speakers: Speaker[] = [
     id: "speaker-3",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     socialMedia: [
       {
         platform: "x",
@@ -70,7 +73,8 @@ export const speakers: Speaker[] = [
     id: "speaker-4",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     socialMedia: [
       {
         platform: "x",
