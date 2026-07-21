@@ -5,177 +5,124 @@ import Icon from "@/components/ui/Icon.astro";
 import { speakers, speakersSection } from "@/data/speakers";
 ---
 
-<Section aria-labelledby="speakers-heading" class="bg-gdg-page">
+<Section aria-labelledby="speakers-heading" class="bg-gdg-page py-16">
   <Container>
+    <!-- Section Header -->
     <div class="mb-12">
       <p class="text-base font-medium text-gdg-hero-emphasis mb-2">
         {speakersSection.label}
       </p>
       <h2
         id="speakers-heading"
-        class="text-4xl lg:text-5xl font-bold text-gdg-text mb-8"
+        class="text-4xl lg:text-5xl font-bold text-gdg-text mb-4"
       >
         {speakersSection.heading}
       </h2>
     </div>
 
-    <!-- Desktop Grid -->
-    <div class="hidden lg:grid lg:grid-cols-2 gap-8">
+    <!-- Desktop Grid: 4 columns × 3 rows (12 speakers) -->
+    <div class="speakers-grid">
       {
         speakers.map((speaker) => (
-          <div class="bg-gdg-surface rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-            <div class="w-full h-64 bg-gdg-surface-mobile/60 flex items-center justify-center">
-              <span class="text-gdg-text-muted font-medium">Foto</span>
+          <a
+            href="/speakers"
+            class="bg-gdg-surface rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer flex flex-col group"
+          >
+            <!-- Photo -->
+            <div class="w-full h-56 bg-gdg-surface-mobile/60 flex items-center justify-center group-hover:bg-gdg-surface-mobile/80 transition-colors">
+              <span class="text-gdg-text-muted text-sm font-medium">Foto</span>
             </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gdg-text mb-2">
+            
+            <!-- Content -->
+            <div class="p-5 flex flex-col">
+              <h3 class="text-base font-bold text-gdg-text mb-1 group-hover:text-gdg-hero-emphasis transition-colors line-clamp-2">
                 {speaker.name}
               </h3>
-              <p class="text-sm font-medium text-gdg-hero-emphasis mb-3">
+              <p class="text-xs font-medium text-gdg-hero-emphasis mb-2 line-clamp-1">
                 {speaker.role}
               </p>
-              <p class="text-base text-gdg-text-muted mb-4">
+              <p class="text-sm text-gdg-text-muted mb-3 line-clamp-2">
                 {speaker.description}
               </p>
-              <div class="flex gap-4">
+              
+              <!-- Technologies: Show first 2 -->
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                {speaker.technologies.slice(0, 2).map((tech) => (
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-gdg-surface-mobile text-xs font-medium text-gdg-text">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <!-- Social Media -->
+              <div class="flex gap-2 pt-3 border-t border-gdg-surface-mobile">
                 {speaker.socialMedia.map((social) => (
                   <a
                     href={social.url}
                     rel="noopener noreferrer"
                     target="_blank"
-                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gdg-surface-mobile hover:bg-gdg-surface transition-colors"
-                    aria-label={`${speaker.name} ${social.platform}`}
+                    class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gdg-surface-mobile hover:bg-gdg-surface transition-colors"
+                    aria-label={`${speaker.name} en ${social.platform}`}
                   >
-                    <Icon name={social.icon} class="w-5 h-5 text-gdg-text" />
+                    <Icon name={social.icon} class="w-4 h-4 text-gdg-text" />
                   </a>
                 ))}
               </div>
             </div>
-          </div>
+          </a>
         ))
       }
-    </div>
-
-    <!-- Mobile Carousel -->
-    <div class="lg:hidden">
-      <div
-        class="carousel-container relative overflow-hidden"
-        role="region"
-        aria-label="Carrusel de ponentes"
-      >
-        <div
-          class="carousel-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory"
-          data-carousel
-        >
-          {
-            speakers.map((speaker) => (
-              <div class="carousel-slide flex-shrink-0 w-full snap-start">
-                <div class="bg-gdg-surface rounded-lg overflow-hidden">
-                  <div class="w-full h-80 bg-gdg-surface-mobile/60 flex items-center justify-center">
-                    <span class="text-gdg-text-muted font-medium">Foto</span>
-                  </div>
-                  <div class="p-6">
-                    <h3 class="text-xl font-bold text-gdg-text mb-2">
-                      {speaker.name}
-                    </h3>
-                    <p class="text-sm font-medium text-gdg-hero-emphasis mb-3">
-                      {speaker.role}
-                    </p>
-                    <p class="text-base text-gdg-text-muted mb-4">
-                      {speaker.description}
-                    </p>
-                    <div class="flex gap-4">
-                      {speaker.socialMedia.map((social) => (
-                        <a
-                          href={social.url}
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gdg-surface-mobile hover:bg-gdg-surface transition-colors"
-                          aria-label={`${speaker.name} ${social.platform}`}
-                        >
-                          <Icon
-                            name={social.icon}
-                            class="w-5 h-5 text-gdg-text"
-                          />
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-
-        <!-- Navigation Dots -->
-        <div class="carousel-controls flex justify-center gap-2 mt-6">
-          {
-            speakers.map((_, index) => (
-              <button
-                class="carousel-dot h-2 w-2 rounded-full bg-gdg-text-muted transition-colors"
-                data-slide={index}
-                aria-label={`Ir a ponente ${index + 1}`}
-                aria-pressed={index === 0}
-              />
-            ))
-          }
-        </div>
-      </div>
     </div>
   </Container>
 </Section>
 
 <style>
-  .carousel-track {
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+  .speakers-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .carousel-track::-webkit-scrollbar {
-    display: none;
+  @media (min-width: 768px) {
+    .speakers-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
-  .carousel-dot {
+  @media (min-width: 1024px) {
+    .speakers-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .speakers-grid a {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100%;
+    background-color: var(--color-gdg-surface);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
   }
 
-  .carousel-dot.active {
-    background-color: var(--color-gdg-hero-emphasis);
-    width: 1.5rem;
-    transition: all 0.3s ease;
+  .speakers-grid a:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 </style>
-
-<script>
-  const carousel = document.querySelector("[data-carousel]") as HTMLElement | null;
-  const dots = document.querySelectorAll(".carousel-dot");
-
-  if (carousel) {
-    const updateActiveDot = () => {
-      const scrollLeft = carousel.scrollLeft;
-      const slideWidth = carousel.offsetWidth;
-      const activeIndex = Math.round(scrollLeft / slideWidth);
-
-      dots.forEach((dot, index) => {
-        if (index === activeIndex) {
-          dot.classList.add("active");
-          dot.setAttribute("aria-pressed", "true");
-        } else {
-          dot.classList.remove("active");
-          dot.setAttribute("aria-pressed", "false");
-        }
-      });
-    };
-
-    carousel.addEventListener("scroll", updateActiveDot);
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        const slideWidth = carousel.offsetWidth;
-        carousel.scrollLeft = index * slideWidth;
-      });
-    });
-
-    // Initial update
-    updateActiveDot();
-  }
-</script>

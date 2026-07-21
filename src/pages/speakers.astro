@@ -1,0 +1,163 @@
+---
+import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
+import Icon from "@/components/ui/Icon.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { speakers } from "@/data/speakers";
+---
+
+<BaseLayout title="Ponentes | DevFest Aranjuez 2026">
+  <Section class="bg-gdg-page py-12 lg:py-16">
+    <Container>
+      <div class="mb-12">
+        <h1 class="text-4xl lg:text-5xl font-bold text-gdg-text mb-4">
+          Todos los ponentes
+        </h1>
+        <p class="text-lg text-gdg-text-muted">
+          Conoce a los expertos que compartirán sus conocimientos en DevFest Aranjuez 2026
+        </p>
+      </div>
+
+      <!-- Desktop Grid: 3 columns -->
+      <div class="hidden lg:grid lg:grid-cols-3 gap-8">
+        {
+          speakers.map((speaker) => (
+            <div class="bg-gdg-surface rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="w-full h-56 bg-gdg-surface-mobile/60 flex items-center justify-center hover:bg-gdg-surface-mobile/80 transition-colors">
+                <span class="text-gdg-text-muted font-medium">Foto</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold text-gdg-text mb-1">
+                  {speaker.name}
+                </h3>
+                <p class="text-sm font-medium text-gdg-hero-emphasis mb-3">
+                  {speaker.role}
+                </p>
+                <p class="text-sm text-gdg-text-muted mb-4 line-clamp-3">
+                  {speaker.description}
+                </p>
+                
+                <!-- Technologies -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {speaker.technologies.map((tech) => (
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-gdg-surface-mobile text-xs font-medium text-gdg-text">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <!-- Social Media -->
+                <div class="flex gap-3 pt-4 border-t border-gdg-surface-mobile">
+                  {speaker.socialMedia.map((social) => (
+                    <a
+                      href={social.url}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gdg-surface-mobile hover:bg-gdg-surface transition-colors"
+                      aria-label={`${speaker.name} ${social.platform}`}
+                    >
+                      <Icon name={social.icon} class="w-4 h-4 text-gdg-text" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Tablet: 2 columns -->
+      <div class="hidden md:grid lg:hidden md:grid-cols-2 gap-6">
+        {
+          speakers.map((speaker) => (
+            <div class="bg-gdg-surface rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="w-full h-48 bg-gdg-surface-mobile/60 flex items-center justify-center">
+                <span class="text-gdg-text-muted font-medium">Foto</span>
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-bold text-gdg-text mb-1">
+                  {speaker.name}
+                </h3>
+                <p class="text-sm font-medium text-gdg-hero-emphasis mb-3">
+                  {speaker.role}
+                </p>
+                <p class="text-sm text-gdg-text-muted mb-4">
+                  {speaker.description}
+                </p>
+                
+                <!-- Technologies -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {speaker.technologies.map((tech) => (
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-gdg-surface-mobile text-xs font-medium text-gdg-text">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <!-- Social Media -->
+                <div class="flex gap-3 pt-3 border-t border-gdg-surface-mobile">
+                  {speaker.socialMedia.map((social) => (
+                    <a
+                      href={social.url}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gdg-surface-mobile hover:bg-gdg-surface transition-colors"
+                      aria-label={`${speaker.name} ${social.platform}`}
+                    >
+                      <Icon name={social.icon} class="w-4 h-4 text-gdg-text" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Mobile: 1 column -->
+      <div class="md:hidden flex flex-col gap-5">
+        {
+          speakers.map((speaker) => (
+            <div class="bg-gdg-surface rounded-lg overflow-hidden">
+              <div class="w-full h-48 bg-gdg-surface-mobile/60 flex items-center justify-center">
+                <span class="text-gdg-text-muted font-medium">Foto</span>
+              </div>
+              <div class="p-4">
+                <h3 class="text-base font-bold text-gdg-text mb-1">
+                  {speaker.name}
+                </h3>
+                <p class="text-xs font-medium text-gdg-hero-emphasis mb-2">
+                  {speaker.role}
+                </p>
+                
+                <!-- Mobile: Show only first 2 technologies -->
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                  {speaker.technologies.slice(0, 2).map((tech) => (
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-gdg-surface-mobile text-xs font-medium text-gdg-text">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <!-- Social Media -->
+                <div class="flex gap-2 pt-2 border-t border-gdg-surface-mobile">
+                  {speaker.socialMedia.map((social) => (
+                    <a
+                      href={social.url}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gdg-surface-mobile hover:bg-gdg-surface transition-colors"
+                      aria-label={`${speaker.name} ${social.platform}`}
+                    >
+                      <Icon name={social.icon} class="w-3.5 h-3.5 text-gdg-text" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </Section>
+</BaseLayout>
