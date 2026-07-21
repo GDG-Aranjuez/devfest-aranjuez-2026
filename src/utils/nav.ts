@@ -12,7 +12,5 @@ export function isActive(pathname: string, href: string): boolean {
 }
 
 export function navLinkClass(active: boolean, base: string): string {
-  return active
-    ? `${base} text-gdg-text`
-    : `${base} text-gdg-text-secondary hover:text-gdg-text`;
+  return active ? `${base} text-link` : `${base} text-heading hover:text-link`;
 }

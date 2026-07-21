@@ -11,43 +11,42 @@ interface Props {
 }
 
 const { links, pathname, ticketsHref, ticketsLabel } = Astro.props;
-const linkBase =
-  "flex items-center justify-center h-12 w-full text-[15px] font-medium transition-colors";
+const linkBase = "btn-menu flex items-center justify-center h-12 w-full";
 ---
 
 <div
   id="nav-mobile"
-  class="hidden lg:hidden fixed inset-0 z-50 bg-gdg-surface"
+  class="hidden lg:hidden fixed inset-0 z-50 bg-page"
   role="dialog"
   aria-modal="true"
   aria-label="Menú de navegación"
 >
-  <div class="flex flex-col items-end px-6 pt-4 pb-16 h-full">
+  <div class="flex flex-col items-end px-size-7 pt-size-7 pb-size-12 h-full">
     <button
       id="nav-close"
       type="button"
-      class="flex items-center justify-center size-12 text-gdg-text-secondary hover:text-gdg-text transition-colors"
+      class="flex items-center justify-center size-size-11 text-heading hover:text-link transition-colors"
       aria-label="Cerrar menú"
     >
       <svg
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
         fill="none"
         stroke="currentColor"
         stroke-width="1.5"
         stroke-linecap="round"
         aria-hidden="true"
       >
-        <path d="M2 2l12 12M14 2L2 14"></path>
+        <path d="M9 9l18 18M27 9L9 27"></path>
       </svg>
     </button>
 
     <nav
-      class="flex flex-col items-center gap-10 w-full mt-6 flex-1"
+      class="flex flex-col items-center gap-size-9 w-full mt-size-6 flex-1"
       aria-label="Navegación móvil"
     >
-      <div class="flex flex-col items-center gap-6 w-full max-w-[200px]">
+      <div class="flex flex-col items-center gap-size-6 w-full max-w-[200px]">
         {
           links.map(({ href, label }) => {
             const active = isActive(pathname, href);
@@ -65,7 +64,7 @@ const linkBase =
       </div>
       <a
         href={withBase(ticketsHref)}
-        class="flex items-center justify-center h-10 w-full max-w-[200px] px-6 rounded-sm bg-gdg-primary text-white text-[15px] font-medium hover:bg-gdg-primary/90 transition-colors"
+        class="btn-primary btn-primary--block max-w-[200px] h-10"
       >
         {ticketsLabel}
       </a>

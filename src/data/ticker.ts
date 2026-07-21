@@ -1,0 +1,15 @@
+export const tickerItems = [
+  "IA",
+  "Cloud",
+  "Android",
+  "Flutter",
+  "Firebase",
+  "Web",
+  "Open Source",
+  "UX",
+  "DevOps",
+  "ML",
+  "Kotlin",
+  "Gemini",
+  "Maps Platform",
+] as const;

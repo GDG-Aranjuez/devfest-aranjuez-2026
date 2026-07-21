@@ -6,20 +6,20 @@ import { footerMeta, footerMobileNav, footerSections } from "@/data/footer";
 import { withBase } from "@/utils/path";
 ---
 
-<footer class="bg-gdg-surface-mobile md:bg-gdg-surface">
+<footer class="bg-page border-t border-stroke">
   <div class="md:hidden">
-    <Container class="flex flex-col gap-8 pt-14 pb-10">
-      <div class="flex flex-col gap-3">
+    <Container class="flex flex-col gap-size-8 pt-size-12 pb-size-9">
+      <div class="flex flex-col gap-size-5">
         <a href={withBase("/")} class="inline-flex">
           <img
-            src={withBase("/logo.png")}
-            alt="GDG Aranjuez"
-            width="80"
+            src={withBase("/brand/imagotipo-navbar.png")}
+            alt="FresON fest"
+            width="110"
             height="40"
             class="h-10 w-auto"
           />
         </a>
-        <p class="text-[13px] text-gdg-text-muted leading-[1.5]">
+        <p class="type-caption text-muted">
           {footerMeta.tagline}
         </p>
         <SocialLinks variant="mobile" />
@@ -29,12 +29,12 @@ import { withBase } from "@/utils/path";
         <LinkList links={footerMobileNav} />
       </div>
 
-      <hr class="border-gdg-border" />
+      <hr class="border-stroke" />
 
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-size-2">
         <a
           href={withBase(footerMeta.help.href)}
-          class="flex items-center gap-2 py-3 text-[14px] text-gdg-text-help hover:text-gdg-text transition-colors"
+          class="flex items-center gap-size-2 py-size-5 type-paragraph-m text-muted hover:text-heading transition-colors"
         >
           <img
             src={withBase("/help-icon.png")}
@@ -48,11 +48,11 @@ import { withBase } from "@/utils/path";
         </a>
         <a
           href={withBase(footerMeta.conduct.href)}
-          class="py-3 text-[14px] text-gdg-text-secondary hover:text-gdg-text transition-colors"
+          class="py-size-5 type-paragraph-m text-subtitle hover:text-heading transition-colors"
         >
           {footerMeta.conduct.label}
         </a>
-        <p class="py-3 text-[13px] text-gdg-text-secondary">
+        <p class="py-size-5 type-caption text-muted">
           {footerMeta.copyright}
         </p>
       </div>
@@ -60,19 +60,21 @@ import { withBase } from "@/utils/path";
   </div>
 
   <div class="hidden md:flex w-full">
-    <Container class="flex flex-col gap-12 py-20 md:px-(--section-px-desktop)">
+    <Container
+      class="flex flex-col gap-size-12 py-size-13 md:px-(--section-px-desktop)"
+    >
       <div class="grid grid-cols-4 gap-0 w-full">
-        <div class="flex flex-col gap-4 pr-4">
+        <div class="flex flex-col gap-size-4 pr-size-4">
           <a href={withBase("/")} class="inline-flex">
             <img
-              src={withBase("/logo.png")}
-              alt="GDG Aranjuez"
-              width="100"
-              height="40"
+              src={withBase("/brand/imagotipo-navbar.png")}
+              alt="FresON fest"
+              width="145"
+              height="51"
               class="h-10 w-auto"
             />
           </a>
-          <p class="text-sm text-gdg-text-muted leading-[1.5]">
+          <p class="type-paragraph-m text-muted">
             {footerMeta.tagline}
           </p>
           <SocialLinks variant="desktop" />
@@ -80,14 +82,14 @@ import { withBase } from "@/utils/path";
 
         {
           footerSections.map(({ title, links }) => (
-            <div class="flex flex-col gap-4">
-              <h3 class="text-sm font-medium text-gdg-text">{title}</h3>
-              <ul class="flex flex-col gap-4">
+            <div class="flex flex-col gap-size-4">
+              <h3 class="type-paragraph-m font-medium text-heading">{title}</h3>
+              <ul class="flex flex-col gap-size-4">
                 {links.map(({ href, label }) => (
                   <li>
                     <a
                       href={withBase(href)}
-                      class="text-sm text-gdg-text-secondary hover:text-gdg-text transition-colors"
+                      class="type-paragraph-m text-subtitle hover:text-heading transition-colors"
                     >
                       {label}
                     </a>
@@ -100,17 +102,17 @@ import { withBase } from "@/utils/path";
       </div>
 
       <div
-        class="flex items-center justify-between border-t border-gdg-border pt-6"
+        class="flex items-center justify-between border-t border-stroke pt-size-6"
       >
         <a
           href={withBase(footerMeta.conduct.href)}
-          class="text-sm text-gdg-text-secondary hover:text-gdg-text transition-colors"
+          class="type-paragraph-m text-subtitle hover:text-heading transition-colors"
         >
           {footerMeta.conduct.label}
         </a>
         <a
           href={withBase(footerMeta.help.href)}
-          class="flex items-center gap-2 text-[13px] text-gdg-text-help hover:text-gdg-text transition-colors"
+          class="flex items-center gap-size-2 type-caption text-muted hover:text-heading transition-colors"
         >
           <img
             src={withBase("/help-icon.png")}
@@ -122,9 +124,7 @@ import { withBase } from "@/utils/path";
           />
           {footerMeta.help.label}
         </a>
-        <span class="text-sm text-gdg-text-secondary"
-          >{footerMeta.copyright}</span
-        >
+        <span class="type-paragraph-m text-muted">{footerMeta.copyright}</span>
       </div>
     </Container>
   </div>
