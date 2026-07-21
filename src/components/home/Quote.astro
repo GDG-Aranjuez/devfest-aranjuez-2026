@@ -1,0 +1,91 @@
+---
+import Container from "@/components/ui/Container.astro";
+import Section from "@/components/ui/Section.astro";
+import { quote } from "@/data/quote";
+import { withBase } from "@/utils/path";
+
+const embedSrc = `${quote.video.embedSrc}?autoplay=1&rel=0`;
+---
+
+<Section class="!pt-size-9 !pb-size-13" ariaLabelledby="quote-heading">
+  <Container>
+    <h2
+      id="quote-heading"
+      class="type-h2 max-w-[320px] pb-size-6 pr-size-6 lg:max-w-[700px] lg:pr-0"
+    >
+      {quote.text}
+    </h2>
+
+    <div class="py-size-9 lg:py-size-10">
+      <div
+        class="relative h-[350px] w-full overflow-hidden rounded-sm lg:h-[480px]"
+        data-quote-video
+        data-embed-src={embedSrc}
+      >
+        <iframe
+          data-quote-iframe
+          title={quote.video.title}
+          class="absolute inset-0 size-full border-0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          hidden></iframe>
+
+        <button
+          type="button"
+          data-quote-play
+          class="absolute inset-0 flex size-full cursor-pointer items-center justify-center"
+          aria-label={quote.video.playLabel}
+        >
+          <img
+            src={withBase(quote.video.poster)}
+            alt=""
+            width="686"
+            height="700"
+            class="absolute inset-0 size-full object-cover"
+            loading="lazy"
+          />
+          <span class="absolute inset-0 bg-black/25" aria-hidden="true"></span>
+          <img
+            src={withBase(quote.video.playIcon)}
+            alt=""
+            width="56"
+            height="56"
+            class="relative z-10 size-size-11 object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.12)]"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<script>
+  function initQuoteVideo() {
+    document.querySelectorAll("[data-quote-video]").forEach((root) => {
+      if (!(root instanceof HTMLElement)) return;
+
+      const play = root.querySelector("[data-quote-play]");
+      const iframe = root.querySelector("[data-quote-iframe]");
+      if (
+        !(play instanceof HTMLButtonElement) ||
+        !(iframe instanceof HTMLIFrameElement)
+      ) {
+        return;
+      }
+      if (play.dataset.bound === "true") return;
+      play.dataset.bound = "true";
+
+      play.addEventListener("click", () => {
+        const src = root.dataset.embedSrc;
+        if (!src) return;
+        iframe.src = src;
+        iframe.hidden = false;
+        play.hidden = true;
+      });
+    });
+  }
+
+  initQuoteVideo();
+  document.addEventListener("astro:page-load", initQuoteVideo);
+</script>
