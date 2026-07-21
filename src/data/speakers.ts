@@ -17,6 +17,9 @@ interface Speaker {
   socialLinks: SpeakerSocialLink[];
 }
 
+// TODO: Replace this temporary placeholder with final speaker headshots.
+const placeholderSpeakerImage = "/og.jpg";
+
 export const speakersSection: {
   label: string;
   heading: string;
@@ -31,7 +34,7 @@ export const speakersSection: {
       description:
         "Especialista en plataformas de datos y arquitecturas resilientes a gran escala.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Lucía Romero",
       },
       socialLinks: [
@@ -53,7 +56,7 @@ export const speakersSection: {
       description:
         "Impulsa comunidades técnicas con foco en DX, IA aplicada y productos abiertos.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Carlos Peña",
       },
       socialLinks: [
@@ -75,7 +78,7 @@ export const speakersSection: {
       description:
         "Diseña experiencias web accesibles y sistemas de diseño para equipos distribuidos.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Marta Alonso",
       },
       socialLinks: [
@@ -97,7 +100,7 @@ export const speakersSection: {
       description:
         "Lidera equipos de producto con cultura de calidad, métricas y entrega continua.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Diego Serrano",
       },
       socialLinks: [
@@ -119,7 +122,7 @@ export const speakersSection: {
       description:
         "Automatiza infraestructura cloud con enfoque en seguridad y observabilidad.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Irene Castillo",
       },
       socialLinks: [
@@ -141,7 +144,7 @@ export const speakersSection: {
       description:
         "Construye productos de inteligencia artificial centrados en impacto de negocio.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Álvaro Delgado",
       },
       socialLinks: [
@@ -163,7 +166,7 @@ export const speakersSection: {
       description:
         "Convierte investigación de usuarios en experiencias digitales medibles y claras.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Noelia Martín",
       },
       socialLinks: [
@@ -185,7 +188,7 @@ export const speakersSection: {
       description:
         "Ayuda a escalar pipelines de entrega con prácticas de fiabilidad y coste eficiente.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Raúl Jiménez",
       },
       socialLinks: [
@@ -207,7 +210,7 @@ export const speakersSection: {
       description:
         "Diseña asistentes de IA seguros, explicables y listos para entornos regulados.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Sonia Gil",
       },
       socialLinks: [
@@ -229,7 +232,7 @@ export const speakersSection: {
       description:
         "Optimiza apps multiplataforma con foco en rendimiento, testing y mantenibilidad.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Pablo Crespo",
       },
       socialLinks: [
@@ -251,7 +254,7 @@ export const speakersSection: {
       description:
         "Aplica analítica avanzada para resolver decisiones complejas en tiempo real.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Ana Beltrán",
       },
       socialLinks: [
@@ -273,7 +276,7 @@ export const speakersSection: {
       description:
         "Protege aplicaciones modernas mediante threat modeling y hardening continuo.",
       image: {
-        src: "/og.jpg",
+        src: placeholderSpeakerImage,
         alt: "Retrato de Javier Ortega",
       },
       socialLinks: [
