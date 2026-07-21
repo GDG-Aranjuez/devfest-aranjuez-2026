@@ -28,12 +28,10 @@ import { speakers, speakersSection } from "@/data/speakers";
             href="/speakers"
             class="bg-gdg-surface rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer flex flex-col group"
           >
-            <!-- Photo -->
             <div class="w-full h-56 bg-gdg-surface-mobile/60 flex items-center justify-center group-hover:bg-gdg-surface-mobile/80 transition-colors">
               <span class="text-gdg-text-muted text-sm font-medium">Foto</span>
             </div>
-            
-            <!-- Content -->
+
             <div class="p-5 flex flex-col">
               <h3 class="text-base font-bold text-gdg-text mb-1 group-hover:text-gdg-hero-emphasis transition-colors line-clamp-2">
                 {speaker.name}
@@ -44,8 +42,7 @@ import { speakers, speakersSection } from "@/data/speakers";
               <p class="text-sm text-gdg-text-muted mb-3 line-clamp-2">
                 {speaker.description}
               </p>
-              
-              <!-- Technologies: Show first 2 -->
+
               <div class="flex flex-wrap gap-1.5 mb-3">
                 {speaker.technologies.slice(0, 2).map((tech) => (
                   <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-gdg-surface-mobile text-xs font-medium text-gdg-text">
@@ -54,7 +51,6 @@ import { speakers, speakersSection } from "@/data/speakers";
                 ))}
               </div>
 
-              <!-- Social Media -->
               <div class="flex gap-2 pt-3 border-t border-gdg-surface-mobile">
                 {speaker.socialMedia.map((social) => (
                   <a

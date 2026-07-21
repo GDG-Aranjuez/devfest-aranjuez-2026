@@ -17,7 +17,8 @@ export const speakers: Speaker[] = [
     id: "speaker-1",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["React", "TypeScript", "Node.js"],
     socialMedia: [
       {
@@ -36,7 +37,8 @@ export const speakers: Speaker[] = [
     id: "speaker-2",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Python", "Machine Learning", "TensorFlow"],
     socialMedia: [
       {
@@ -55,7 +57,8 @@ export const speakers: Speaker[] = [
     id: "speaker-3",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Kotlin", "Android", "Firebase"],
     socialMedia: [
       {
@@ -74,7 +77,8 @@ export const speakers: Speaker[] = [
     id: "speaker-4",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Go", "Kubernetes", "Docker"],
     socialMedia: [
       {
@@ -93,7 +97,8 @@ export const speakers: Speaker[] = [
     id: "speaker-5",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Vue.js", "Nuxt", "GraphQL"],
     socialMedia: [
       {
@@ -112,7 +117,8 @@ export const speakers: Speaker[] = [
     id: "speaker-6",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Rust", "WebAssembly", "Systems"],
     socialMedia: [
       {
@@ -131,7 +137,8 @@ export const speakers: Speaker[] = [
     id: "speaker-7",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Java", "Spring Boot", "Microservices"],
     socialMedia: [
       {
@@ -150,7 +157,8 @@ export const speakers: Speaker[] = [
     id: "speaker-8",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["AWS", "Cloud", "DevOps"],
     socialMedia: [
       {
@@ -169,7 +177,8 @@ export const speakers: Speaker[] = [
     id: "speaker-9",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Svelte", "UX", "Design Systems"],
     socialMedia: [
       {
@@ -188,7 +197,8 @@ export const speakers: Speaker[] = [
     id: "speaker-10",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Flutter", "Mobile", "Cross-platform"],
     socialMedia: [
       {
@@ -207,7 +217,8 @@ export const speakers: Speaker[] = [
     id: "speaker-11",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Web3", "Blockchain", "Smart Contracts"],
     socialMedia: [
       {
@@ -226,7 +237,8 @@ export const speakers: Speaker[] = [
     id: "speaker-12",
     name: "Nombre y Apellido",
     role: "Rol | Experiencia",
-    description: "Descripción breve de la charla y tópicos que abordará durante la presentación.",
+    description:
+      "Descripción breve de la charla y tópicos que abordará durante la presentación.",
     technologies: ["Data Science", "Analytics", "BigData"],
     socialMedia: [
       {
