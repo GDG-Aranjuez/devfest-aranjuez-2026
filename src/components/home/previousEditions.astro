@@ -2,17 +2,18 @@
 /* eslint-disable prettier/prettier */
 // PreviousEditions.astro
 
+import "../../styles/variables.css";
 import Section from "../ui/Section.astro";
 const slides = [
-  { id: 1, title: "DevFest 2024", image: "", desc: "Gran cierre del evento." },
-  { id: 2, title: "DevFest 2023", image: "", desc: "Apertura del evento." },
-  { id: 3, title: "DevFest 2022", image: "", desc: "Próximamente." },
-  { id: 4, title: "DevFest 2021", image: "", desc: "Próximamente." },
+  { id: 1, title: "DevFest 2025", image: "", desc: "Gran cierre del evento." },
+  { id: 2, title: "DevFest 2024", image: "", desc: "Apertura del evento." },
+  { id: 3, title: "DevFest 2023", image: "", desc: "Próximamente." },
+  { id: 4, title: "DevFest 2022", image: "", desc: "Próximamente." },
 ];
 ---
 
 <Section class="carousel-section">
-  <h2 class="main-title">Lo que vivimos en ediciones anteriores.</h2>
+  <h2 class="main-title">Lo que vivimos en ediciones anteriores</h2>
 
   <carousel-edition>
     <div class="carousel-container">
@@ -68,16 +69,9 @@ const slides = [
 </Section>
 
 <style>
-  :global(:root) {
-    --color-text-dark: #4a4a4a;
-    --color-text-body: #8a8a8a;
-    --color-arrow: #fff;
-    --color-text-light: #fff;
-  }
-
   .carousel-section {
     padding: 4rem 1rem;
-    font-family: system-ui, sans-serif;
+    font-family: var(--font-display);
     text-align: center;
     overflow: hidden;
     perspective: 1000px;
@@ -86,8 +80,9 @@ const slides = [
     margin: 0 auto;
   }
   .main-title {
-    font-size: 1.2rem;
-    color: var(--color-text-light);
+    font-size: var(--font-size-highlight);
+    color: var(--color-heading);
+    font-weight: 600;
     margin-bottom: 3rem;
     text-align: center;
   }
@@ -199,8 +194,9 @@ const slides = [
     height: 65px;
   }
   .slide-title {
-    font-size: 1rem;
-    color: var(--color-text-body);
+    font-family: var(--font-body);
+    color: var(--color-subtitle);
+    font-size: var(--font-size-label-lg);
     margin: 0;
   }
   .slide-desc {
@@ -226,8 +222,7 @@ const slides = [
     justify-content: center;
     padding: 5px;
     cursor: pointer;
-    border: 1px solid #f37d16;
-    background-color: rgba(243, 125, 22, 0.13);
+    background-color: var(--palette-stone-400);
     border-radius: 3px;
     color: var(--color-arrow);
     transition:
@@ -235,13 +230,17 @@ const slides = [
       transform 0.2s;
   }
   button:hover {
-    background: #f37d16;
+    background: var(--palette-orange-400);
     transform: translateY(-2px);
   }
 
   @media (max-width: 768px) {
     .main-title {
-      font-size: 1.2rem;
+      font-size: var(--font-size-h3-lg);
+      line-height: 1.2;
+      
+      display: flex;
+      flex-direction: column;
       margin-bottom: 2rem;
     }
     .carousel-container {
@@ -260,7 +259,7 @@ const slides = [
       font-size: 0.8rem;
     }
     .carousel-controls {
-      display: none;
+      width:
     }
   }
 </style>
