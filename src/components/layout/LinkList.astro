@@ -20,7 +20,7 @@ const { links, class: className = "" } = Astro.props;
         href={withBase(link.href)}
         class="py-size-5 type-paragraph-m text-subtitle hover:text-heading transition-colors"
       >
-        {link.mobileLabel ?? link.label}
+        {link.label}
       </a>
     ))
   }
