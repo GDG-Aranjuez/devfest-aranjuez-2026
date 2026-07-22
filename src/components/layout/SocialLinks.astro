@@ -3,24 +3,14 @@ import Icon from "@/components/ui/Icon.astro";
 import { socialLinks } from "@/data/footer";
 import type { IconName } from "@/types/icon";
 
-interface Props {
-  variant?: "mobile" | "desktop";
-}
-
-const { variant = "mobile" } = Astro.props;
-
-const linkClass =
-  variant === "mobile"
-    ? "size-12 flex items-center justify-center text-subtitle hover:text-heading transition-colors"
-    : "size-10 flex items-center justify-center rounded-sm bg-surface text-subtitle hover:text-heading hover:bg-surface-raised transition-colors";
-
-const iconSizes: Record<"mobile" | "desktop", Record<IconName, number>> = {
-  mobile: { linkedin: 20, x: 18 },
-  desktop: { linkedin: 16, x: 16 },
+const iconSizes: Record<IconName, number> = {
+  linkedin: 36,
+  x: 36,
+  instagram: 32,
 };
 ---
 
-<div class:list={["flex gap-size-5", variant === "desktop" && "pt-size-2"]}>
+<div class="flex items-center gap-size-4">
   {
     socialLinks.map(({ href, label, icon }) => (
       <a
@@ -28,9 +18,9 @@ const iconSizes: Record<"mobile" | "desktop", Record<IconName, number>> = {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={label}
-        class={linkClass}
+        class="size-12 flex items-center text-heading hover:text-brand transition-colors"
       >
-        <Icon name={icon} size={iconSizes[variant][icon]} />
+        <Icon name={icon} size={iconSizes[icon]} />
       </a>
     ))
   }

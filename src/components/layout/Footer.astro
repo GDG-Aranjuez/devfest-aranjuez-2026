@@ -1,130 +1,228 @@
 ---
-import LinkList from "@/components/layout/LinkList.astro";
 import SocialLinks from "@/components/layout/SocialLinks.astro";
 import Container from "@/components/ui/Container.astro";
-import { footerMeta, footerMobileNav, footerSections } from "@/data/footer";
+import { footerMeta, footerSections } from "@/data/footer";
 import { withBase } from "@/utils/path";
 ---
 
-<footer class="bg-page border-t border-stroke">
+<footer class="bg-page">
   <div class="md:hidden">
-    <Container class="flex flex-col gap-size-8 pt-size-12 pb-size-9">
-      <div class="flex flex-col gap-size-5">
-        <a href={withBase("/")} class="inline-flex">
-          <img
-            src={withBase("/brand/imagotipo-navbar.png")}
-            alt="FresON fest"
-            width="110"
-            height="40"
-            class="h-10 w-auto"
-          />
-        </a>
-        <p class="type-caption text-muted">
-          {footerMeta.tagline}
-        </p>
-        <SocialLinks variant="mobile" />
+    <Container class="flex flex-col items-center pt-size-13 pb-size-8">
+      <div class="flex w-full max-w-[380px] flex-col items-center pb-size-6">
+        <div class="flex w-full flex-col items-center pb-size-10">
+          <div class="flex w-full flex-col items-center pb-size-8">
+            <div
+              class="flex w-full max-w-[320px] flex-col items-center px-size-5 pb-size-6"
+            >
+              <p class="type-paragraph-m text-center text-body">
+                {footerMeta.tagline}
+              </p>
+            </div>
+            <a href={withBase("/")} class="inline-flex pb-size-7">
+              <img
+                src={withBase("/brand/imagotipo-navbar.png")}
+                alt="FresON fest"
+                width="110"
+                height="40"
+                class="h-[40px] w-[110px]"
+              />
+            </a>
+            <div class="flex w-full flex-col items-center pt-size-6">
+              <p class="type-paragraph-m pb-size-6 text-center text-subtitle">
+                {footerMeta.collaborationLabel}
+              </p>
+              <a
+                href={footerMeta.gdg.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex"
+              >
+                <img
+                  src={withBase(footerMeta.gdg.logo)}
+                  alt={footerMeta.gdg.alt}
+                  width="121"
+                  height="26"
+                  class="h-[26px] w-[121px] object-contain object-left"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div class="flex w-full justify-center py-size-5">
+            <SocialLinks />
+          </div>
+        </div>
+
+        <nav
+          class="flex w-full flex-col items-center"
+          aria-label="Enlaces del pie de página"
+        >
+          {
+            footerSections.map(({ title, links }) => (
+              <div class="flex w-full flex-col items-center pb-size-8">
+                <h3 class="w-full pb-size-4 text-center font-body text-base leading-[1.4] font-normal text-heading">
+                  {title}
+                </h3>
+                <ul class="flex w-full flex-col items-center gap-size-4">
+                  {links.map(({ href, label }) => (
+                    <li class="w-full text-center">
+                      <a
+                        href={withBase(href)}
+                        class="type-paragraph-m text-highlighted hover:text-brand-hover transition-colors"
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </nav>
       </div>
 
-      <div class="panel">
-        <LinkList links={footerMobileNav} />
-      </div>
-
-      <hr class="border-stroke" />
-
-      <div class="flex flex-col gap-size-2">
+      <div
+        class="flex w-full max-w-[380px] flex-col border-t border-stroke-strong pt-size-7"
+      >
         <a
           href={withBase(footerMeta.help.href)}
-          class="flex items-center gap-size-2 py-size-5 type-paragraph-m text-muted hover:text-heading transition-colors"
+          class="flex items-center justify-center gap-size-0 py-size-5 type-caption font-medium text-subtitle hover:text-heading transition-colors"
         >
           <img
-            src={withBase("/help-icon.png")}
+            src={withBase("/icons/lifebuoy.svg")}
             alt=""
-            width="20"
-            height="20"
-            class="size-5 opacity-60"
+            width="24"
+            height="24"
+            class="size-6"
             aria-hidden="true"
           />
-          {footerMeta.help.label}
+          <span class="px-size-4">{footerMeta.help.label}</span>
         </a>
-        <a
-          href={withBase(footerMeta.conduct.href)}
-          class="py-size-5 type-paragraph-m text-subtitle hover:text-heading transition-colors"
-        >
-          {footerMeta.conduct.label}
-        </a>
-        <p class="py-size-5 type-caption text-muted">
-          {footerMeta.copyright}
-        </p>
+        <div class="flex flex-col gap-size-4">
+          <a
+            href={withBase(footerMeta.conduct.href)}
+            class="py-size-5 text-center type-caption font-medium text-body hover:text-heading transition-colors"
+          >
+            {footerMeta.conduct.label}
+          </a>
+          <p
+            class="pt-size-5 text-center type-caption font-medium text-subtitle"
+          >
+            {footerMeta.copyright}
+          </p>
+        </div>
       </div>
     </Container>
   </div>
 
-  <div class="hidden md:flex w-full">
+  <div class="hidden md:block">
     <Container
-      class="flex flex-col gap-size-12 py-size-13 md:px-(--section-px-desktop)"
+      class="flex flex-col items-center pb-size-13 md:px-(--section-px-desktop)"
     >
-      <div class="grid grid-cols-4 gap-0 w-full">
-        <div class="flex flex-col gap-size-4 pr-size-4">
-          <a href={withBase("/")} class="inline-flex">
-            <img
-              src={withBase("/brand/imagotipo-navbar.png")}
-              alt="FresON fest"
-              width="145"
-              height="51"
-              class="h-10 w-auto"
-            />
-          </a>
-          <p class="type-paragraph-m text-muted">
-            {footerMeta.tagline}
-          </p>
-          <SocialLinks variant="desktop" />
+      <div
+        class="flex w-full max-w-[1200px] items-center border-t border-stroke-strong pt-size-13 pb-size-10"
+      >
+        <div class="flex min-w-0 flex-1 flex-col items-start">
+          <div class="flex w-full flex-col items-start pb-size-8">
+            <div class="flex w-full flex-col items-start pb-size-6">
+              <p class="type-paragraph-m max-w-[320px] pb-size-6 text-body">
+                {footerMeta.tagline}
+              </p>
+              <a href={withBase("/")} class="inline-flex">
+                <img
+                  src={withBase("/brand/imagotipo-navbar.png")}
+                  alt="FresON fest"
+                  width="110"
+                  height="40"
+                  class="h-[40px] w-[110px]"
+                />
+              </a>
+            </div>
+            <div class="flex w-full flex-col items-start pt-size-6">
+              <p class="type-paragraph-m pb-size-6 text-subtitle">
+                {footerMeta.collaborationLabel}
+              </p>
+              <a
+                href={footerMeta.gdg.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex"
+              >
+                <img
+                  src={withBase(footerMeta.gdg.logo)}
+                  alt={footerMeta.gdg.alt}
+                  width="135"
+                  height="29"
+                  class="h-[29px] w-[135px] object-contain object-left"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="pt-size-5">
+            <SocialLinks />
+          </div>
         </div>
 
-        {
-          footerSections.map(({ title, links }) => (
-            <div class="flex flex-col gap-size-4">
-              <h3 class="type-paragraph-m font-medium text-heading">{title}</h3>
-              <ul class="flex flex-col gap-size-4">
-                {links.map(({ href, label }) => (
-                  <li>
-                    <a
-                      href={withBase(href)}
-                      class="type-paragraph-m text-subtitle hover:text-heading transition-colors"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+        <nav
+          class="flex items-end self-stretch"
+          aria-label="Enlaces del pie de página"
+        >
+          {
+            footerSections.map(({ title, links }) => (
+              <div class="flex w-[200px] flex-col items-start">
+                <h3 class="w-full pb-size-5 font-body text-base leading-[1.4] font-normal text-heading">
+                  {title}
+                </h3>
+                <ul class="flex w-full flex-col items-start">
+                  {links.map(({ href, label }) => (
+                    <li class="w-full py-size-2">
+                      <a
+                        href={withBase(href)}
+                        class="type-paragraph-m text-highlighted hover:text-brand-hover transition-colors"
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </nav>
       </div>
 
       <div
-        class="flex items-center justify-between border-t border-stroke pt-size-6"
+        class="flex w-full max-w-[1200px] items-center border-t border-stroke-strong pt-size-8"
       >
-        <a
-          href={withBase(footerMeta.conduct.href)}
-          class="type-paragraph-m text-subtitle hover:text-heading transition-colors"
-        >
-          {footerMeta.conduct.label}
-        </a>
-        <a
-          href={withBase(footerMeta.help.href)}
-          class="flex items-center gap-size-2 type-caption text-muted hover:text-heading transition-colors"
-        >
-          <img
-            src={withBase("/help-icon.png")}
-            alt=""
-            width="20"
-            height="20"
-            class="size-5 opacity-60"
-            aria-hidden="true"
-          />
-          {footerMeta.help.label}
-        </a>
-        <span class="type-paragraph-m text-muted">{footerMeta.copyright}</span>
+        <div class="flex min-w-0 flex-1 items-start py-size-5">
+          <a
+            href={withBase(footerMeta.conduct.href)}
+            class="type-caption font-medium text-subtitle hover:text-heading transition-colors"
+          >
+            {footerMeta.conduct.label}
+          </a>
+        </div>
+        <div class="flex min-w-0 flex-1 items-center justify-center py-size-5">
+          <a
+            href={withBase(footerMeta.help.href)}
+            class="flex items-center type-caption font-medium text-subtitle hover:text-heading transition-colors"
+          >
+            <img
+              src={withBase("/icons/lifebuoy.svg")}
+              alt=""
+              width="24"
+              height="24"
+              class="size-6"
+              aria-hidden="true"
+            />
+            <span class="px-size-4">{footerMeta.help.label}</span>
+          </a>
+        </div>
+        <div class="flex min-w-0 flex-1 items-end justify-end py-size-5">
+          <p class="type-caption font-medium text-subtitle">
+            {footerMeta.copyright}
+          </p>
+        </div>
       </div>
     </Container>
   </div>

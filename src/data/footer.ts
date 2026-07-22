@@ -1,11 +1,17 @@
-import type { FooterLink, FooterSection } from "@/types/footer";
+import type { FooterSection } from "@/types/footer";
 import type { IconName } from "@/types/icon";
 
 export const footerMeta = {
-  tagline: "FresON Fest · Organizado por GDG Aranjuez.",
+  tagline: "Fresón Fest · Comunidad de desarrolladores Google en Aranjuez.",
+  collaborationLabel: "Con la colaboración de",
   copyright: "© 2026, GDG Aranjuez",
   help: { href: "/ayuda", label: "¿Necesitas ayuda?" },
   conduct: { href: "/codigo-conducta", label: "Código de conducta" },
+  gdg: {
+    href: "https://gdg.community.dev/gdg-aranjuez/",
+    logo: "/brand/gdg-lockup.png",
+    alt: "GDG",
+  },
 } as const;
 
 export const socialLinks = [
@@ -19,21 +25,20 @@ export const socialLinks = [
     label: "X (Twitter)",
     icon: "x" satisfies IconName,
   },
+  {
+    href: "https://www.instagram.com/gdgaranjuez/",
+    label: "Instagram",
+    icon: "instagram" satisfies IconName,
+  },
 ] as const;
-
-const ubicacion: FooterLink = {
-  href: "/ubicacion",
-  label: "Ubicación",
-  mobileLabel: "Cómo llegar",
-};
 
 export const footerSections: FooterSection[] = [
   {
     title: "Evento",
     links: [
-      { href: "/ponentes", label: "Ponentes" },
       { href: "/agenda", label: "Agenda" },
-      ubicacion,
+      { href: "/ponentes", label: "Ponentes" },
+      { href: "/ubicacion", label: "Ubicación" },
     ],
   },
   {
@@ -52,12 +57,4 @@ export const footerSections: FooterSection[] = [
       { href: "/cfp", label: "Propón una charla" },
     ],
   },
-];
-
-export const footerMobileNav: FooterLink[] = [
-  { href: "/ponentes", label: "Ponentes" },
-  { href: "/agenda", label: "Agenda" },
-  { href: "/patrocinadores", label: "Patrocinadores" },
-  ubicacion,
-  { href: "/ediciones-anteriores", label: "Ediciones anteriores" },
 ];
